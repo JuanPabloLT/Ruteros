@@ -7,7 +7,7 @@ namespace Ruteros.Web.Helpers
 {
     public interface IUserHelper
     {
-        Task<UserEntity> GetUserByEmailAsync(string email);
+        Task<UserEntity> GetUserAsync(string email);
 
         Task<IdentityResult> AddUserAsync(UserEntity user, string password);
 
@@ -27,6 +27,7 @@ namespace Ruteros.Web.Helpers
 
         Task<IdentityResult> UpdateUserAsync(UserEntity user);
 
+        Task<SignInResult> ValidatePasswordAsync(UserEntity user, string password);
 
     }
 

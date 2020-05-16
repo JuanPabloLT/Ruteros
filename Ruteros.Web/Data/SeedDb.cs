@@ -39,7 +39,7 @@ namespace Ruteros.Web.Data
             string phone,
             UserType userType)
         {
-            var user = await _userHelper.GetUserByEmailAsync(email);
+            var user = await _userHelper.GetUserAsync(email);
             if (user == null)
             {
                 user = new UserEntity
