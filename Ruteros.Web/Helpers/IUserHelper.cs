@@ -2,12 +2,15 @@
 using Ruteros.Web.Data.Entities;
 using Ruteros.Web.Models;
 using System.Threading.Tasks;
+using System;
 
 namespace Ruteros.Web.Helpers
 {
     public interface IUserHelper
     {
         Task<UserEntity> GetUserAsync(string email);
+
+        Task<UserEntity> GetUserAsync(Guid userId);
 
         Task<IdentityResult> AddUserAsync(UserEntity user, string password);
 
@@ -28,6 +31,11 @@ namespace Ruteros.Web.Helpers
         Task<IdentityResult> UpdateUserAsync(UserEntity user);
 
         Task<SignInResult> ValidatePasswordAsync(UserEntity user, string password);
+
+        Task<string> GenerateEmailConfirmationTokenAsync(UserEntity user);
+
+        Task<IdentityResult> ConfirmEmailAsync(UserEntity user, string token);
+
 
     }
 

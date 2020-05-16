@@ -3,6 +3,8 @@ using Ruteros.Common.Enums;
 using Ruteros.Web.Data.Entities;
 using Ruteros.Web.Models;
 using System.Threading.Tasks;
+using System;
+
 
 namespace Ruteros.Web.Helpers
 {
@@ -20,6 +22,21 @@ namespace Ruteros.Web.Helpers
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
+        }
+
+        public async Task<UserEntity> GetUserAsync(Guid userId)
+        {
+            return await _userManager.FindByIdAsync(userId.ToString());
+        }
+
+        public async Task<IdentityResult> ConfirmEmailAsync(UserEntity user, string token)
+        {
+            return await _userManager.ConfirmEmailAsync(user, token);
+        }
+
+        public async Task<string> GenerateEmailConfirmationTokenAsync(UserEntity user)
+        {
+            return await _userManager.GenerateEmailConfirmationTokenAsync(user);
         }
 
         public async Task<SignInResult> ValidatePasswordAsync(UserEntity user, string password)
