@@ -46,17 +46,13 @@ namespace Ruteros.Web
 
             services.AddIdentity<UserEntity, IdentityRole>(cfg =>
             {
-                cfg.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
-                cfg.SignIn.RequireConfirmedEmail = true;
                 cfg.User.RequireUniqueEmail = true;
                 cfg.Password.RequireDigit = false;
                 cfg.Password.RequiredUniqueChars = 0;
                 cfg.Password.RequireLowercase = false;
                 cfg.Password.RequireNonAlphanumeric = false;
                 cfg.Password.RequireUppercase = false;
-            })
-                .AddDefaultTokenProviders()
-                .AddEntityFrameworkStores<DataContext>();
+            }).AddEntityFrameworkStores<DataContext>();
 
             services.AddAuthentication()
             .AddCookie()
