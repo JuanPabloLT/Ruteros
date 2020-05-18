@@ -7,16 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Ruteros.Web.Data;
 using Ruteros.Web.Data.Entities;
+using Ruteros.Web.Helpers;
+using Ruteros.Web.Models;
 
 namespace Ruteros.Web.Controllers
 {
     public class VehiclesController : Controller
     {
         private readonly DataContext _context;
+        private readonly IConverterHelper _converterHelper;
+        private readonly IImageHelper _imageHelper;
 
-        public VehiclesController(DataContext context)
+        public VehiclesController(DataContext context,
+            IConverterHelper converterHelper,
+            IImageHelper imageHelper)
         {
             _context = context;
+            _converterHelper = converterHelper;
+            _imageHelper = imageHelper;
         }
 
         // GET: Vehicles
@@ -38,15 +46,38 @@ namespace Ruteros.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Plaque,PicturePath")] VehicleEntity vehicleEntity)
+        public async Task<IActionResult> Create(VehicleViewModel vehicleViewModel)
         {
             if (ModelState.IsValid)
             {
+                string path = string.Empty;
+
+                if (vehicleViewModel.PictureFile != null)
+                {
+                    path = await _imageHelper.UploadImageAsync(vehicleViewModel.PictureFile, "Vehicles");
+                }
+
+                VehicleEntity vehicleEntity = _converterHelper.ToVehicleEntity(vehicleViewModel, path, true);
                 _context.Add(vehicleEntity);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException.Message.Contains("duplicate"))
+                    {
+                        ModelState.AddModelError(string.Empty, "Already exists a vehicle with the same plaque.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                    }
+                }
             }
-            return View(vehicleEntity);
+
+            return View(vehicleViewModel);
         }
 
         // GET: Vehicles/Edit/5
@@ -86,14 +117,9 @@ namespace Ruteros.Web.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!VehicleEntityExists(vehicleEntity.Id))
-                    {
+
                         return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -114,24 +140,9 @@ namespace Ruteros.Web.Controllers
             {
                 return NotFound();
             }
-
-            return View(vehicleEntity);
-        }
-
-        // POST: Vehicles/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var vehicleEntity = await _context.Vehicles.FindAsync(id);
             _context.Vehicles.Remove(vehicleEntity);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool VehicleEntityExists(int id)
-        {
-            return _context.Vehicles.Any(e => e.Id == id);
         }
     }
 }
