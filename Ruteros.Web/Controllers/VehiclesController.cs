@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ using Ruteros.Web.Models;
 
 namespace Ruteros.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class VehiclesController : Controller
     {
         private readonly DataContext _context;
@@ -88,12 +90,14 @@ namespace Ruteros.Web.Controllers
                 return NotFound();
             }
 
-            var vehicleEntity = await _context.Vehicles.FindAsync(id);
+            VehicleEntity vehicleEntity = await _context.Vehicles.FindAsync(id);
             if (vehicleEntity == null)
             {
                 return NotFound();
             }
-            return View(vehicleEntity);
+
+            VehicleViewModel vehicleViewModel = _converterHelper.ToVehicleViewModel(vehicleEntity);
+            return View(vehicleViewModel);
         }
 
         // POST: Vehicles/Edit/5
@@ -101,29 +105,42 @@ namespace Ruteros.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Plaque,PicturePath")] VehicleEntity vehicleEntity)
+        public async Task<IActionResult> Edit(int id, VehicleViewModel vehicleViewModel)
         {
-            if (id != vehicleEntity.Id)
+            if (id != vehicleViewModel.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
+                string path = vehicleViewModel.PicturePath;
+
+                if (vehicleViewModel.PictureFile != null)
+                {
+                    path = await _imageHelper.UploadImageAsync(vehicleViewModel.PictureFile, "Vehicles");
+                }
+
+                VehicleEntity vehicleEntity = _converterHelper.ToVehicleEntity(vehicleViewModel, path, false);
+                _context.Update(vehicleEntity);
                 try
                 {
-                    _context.Update(vehicleEntity);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ex)
                 {
-
-                        return NotFound();
-
+                    if (ex.InnerException.Message.Contains("duplicate"))
+                    {
+                        ModelState.AddModelError(string.Empty, $"Already exists the vehicle: {vehicleEntity.Plaque}.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                    }
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View(vehicleEntity);
+            return View(vehicleViewModel);
         }
 
         // GET: Vehicles/Delete/5
