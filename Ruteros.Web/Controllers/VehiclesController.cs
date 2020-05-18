@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +10,6 @@ using Ruteros.Web.Data.Entities;
 
 namespace Ruteros.Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class VehiclesController : Controller
     {
         private readonly DataContext _context;
@@ -27,23 +25,7 @@ namespace Ruteros.Web.Controllers
             return View(await _context.Vehicles.ToListAsync());
         }
 
-        // GET: Vehicles/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var vehicleEntity = await _context.Vehicles
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (vehicleEntity == null)
-            {
-                return NotFound();
-            }
-
-            return View(vehicleEntity);
-        }
+        
 
         // GET: Vehicles/Create
         public IActionResult Create()
@@ -56,7 +38,7 @@ namespace Ruteros.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Plaque")] VehicleEntity vehicleEntity)
+        public async Task<IActionResult> Create([Bind("Id,Plaque,PicturePath")] VehicleEntity vehicleEntity)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +70,7 @@ namespace Ruteros.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Plaque")] VehicleEntity vehicleEntity)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Plaque,PicturePath")] VehicleEntity vehicleEntity)
         {
             if (id != vehicleEntity.Id)
             {
