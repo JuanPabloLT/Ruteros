@@ -151,12 +151,13 @@ namespace Ruteros.Web.Controllers
                 return NotFound();
             }
 
-            var vehicleEntity = await _context.Vehicles
+            VehicleEntity vehicleEntity = await _context.Vehicles
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (vehicleEntity == null)
             {
                 return NotFound();
             }
+
             _context.Vehicles.Remove(vehicleEntity);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
