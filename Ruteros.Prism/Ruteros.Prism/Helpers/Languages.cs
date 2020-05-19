@@ -18,6 +18,10 @@ namespace Ruteros.Prism.Helpers
 
         public static string Culture { get; set; }
 
+        public static string Logout => Resource.Logout;
+
+        public static string LoginError => Resource.LoginError;
+
         public static string Error => Resource.Error;
 
         public static string Register => Resource.Register;

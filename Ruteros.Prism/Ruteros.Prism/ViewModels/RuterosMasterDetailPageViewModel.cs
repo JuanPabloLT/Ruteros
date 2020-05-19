@@ -1,4 +1,6 @@
-﻿using Prism.Navigation;
+﻿using Newtonsoft.Json;
+using Prism.Navigation;
+using Ruteros.Common.Helpers;
 using Ruteros.Common.Models;
 using Ruteros.Prism.Helpers;
 using System.Collections.Generic;
@@ -10,12 +12,29 @@ namespace Ruteros.Prism.ViewModels
     public class RuterosMasterDetailPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private UserResponse _user;
 
         public RuterosMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
-            LoadMenus();
+            LoadUser();
+            LoadMenus();            
         }
+
+        public UserResponse User
+        {
+            get => _user;
+            set => SetProperty(ref _user, value);
+        }
+
+        private void LoadUser()
+        {
+            if (Settings.IsLogin)
+            {
+                User = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            }
+        }
+
 
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
@@ -51,7 +70,7 @@ namespace Ruteros.Prism.ViewModels
                 {
                     Icon = "ic_exit_to_app",
                     PageName = "LoginPage",
-                    Title = Languages.Login
+                    Title = Settings.IsLogin ? Languages.Logout : Languages.Login
                 }
             };
 

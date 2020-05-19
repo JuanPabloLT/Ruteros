@@ -174,5 +174,10 @@
   <data name="RequestJoinGroupEmailSent" xml:space="preserve">
     <value>Se ha enviado un correo electrónico al usuario con su solicitud, ¡esperamos a que responda pronto!</value>
   </data>
-
+  <data name="LoginError" xml:space="preserve">
+    <value>Fallo al iniciar sesión</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
 </root>

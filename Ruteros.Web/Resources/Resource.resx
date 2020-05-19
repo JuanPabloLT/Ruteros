@@ -174,5 +174,10 @@
   <data name="RequestJoinGroupEmailSent" xml:space="preserve">
     <value>An email has been sent to the user with your request, we hope to respond soon!</value>
   </data>
-
+  <data name="LoginError" xml:space="preserve">
+    <value>Failed to login</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
 </root>

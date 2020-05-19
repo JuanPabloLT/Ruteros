@@ -115,6 +115,24 @@ namespace Ruteros.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to login.
+        /// </summary>
+        public static string LoginError {
+            get {
+                return ResourceManager.GetString("LoginError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To reset the password click in this link:.
         /// </summary>
         public static string RecoverPasswordBody {
