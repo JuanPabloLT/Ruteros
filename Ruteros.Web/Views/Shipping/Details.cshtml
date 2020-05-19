@@ -68,7 +68,10 @@
                                     @Html.DisplayFor(modelItem => item.Description)
                                 </td>
                                 <td>
-                                   <img src="@Url.Content(item.PicturePath)" alt="image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                                    @if (!string.IsNullOrEmpty(item.PicturePath))
+                                    {
+                                        <img src="@Url.Content(item.PicturePath)" alt="image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                                    }
                                 </td>
                             </tr>
                         }
