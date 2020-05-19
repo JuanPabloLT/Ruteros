@@ -1,5 +1,6 @@
 ﻿using Prism.Navigation;
 using Ruteros.Common.Models;
+using Ruteros.Prism.Helpers;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -26,31 +27,31 @@ namespace Ruteros.Prism.ViewModels
                 {
                     Icon = "ic_departure_board",
                     PageName = "HomePage",
-                    Title = "New trip"
+                    Title = Languages.NewTrip
                 },
                 new Menu
                 {
                     Icon = "ic_history",
                     PageName = "TripHistoryPage",
-                    Title = "See trip history"
+                    Title = Languages.TripHistory
                 },
                 new Menu
                 {
                     Icon = "ic_content_paste",
                     PageName = "ShippingPage",
-                    Title = "Check shipping history"
+                    Title = Languages.CheckShipping
                 },
                 new Menu
                 {
                     Icon = "ic_account_circle",
                     PageName = "ModifyUserPage",
-                    Title = "Modify User"
+                    Title = Languages.ModifyUser
                 },
                 new Menu
                 {
                     Icon = "ic_exit_to_app",
                     PageName = "LoginPage",
-                    Title = "Log in"
+                    Title = Languages.Login
                 }
             };
 

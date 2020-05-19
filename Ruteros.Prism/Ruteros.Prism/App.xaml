@@ -5,7 +5,53 @@
              x:Class="Ruteros.Prism.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
 
-	</Application.Resources>
+            <!-- Parameters -->
+            <x:String x:Key="UrlAPI"></x:String>
+            <x:String x:Key="UrlNoImage"></x:String>
+
+            <!-- Colors -->
+            <Color x:Key="ColorBackgroud">#FFFFFF</Color>
+            <Color x:Key="ColorPrimary">#118C76</Color>
+            <Color x:Key="ColorSecondary">#25D9B8</Color>
+            <Color x:Key="ColorDanger">#F2BB16</Color>
+            <Color x:Key="ColorAccent">#BF800B</Color>
+            <Color x:Key="ColorFont">#000000</Color>
+            <Color x:Key="ColorFontInverse">#FFFFFF</Color>
+
+            <!-- Styles -->
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorAccent}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="TextColor" Value="{StaticResource ColorFontInverse}" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ColorFont}" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorFontInverse}" />
+            </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorFontInverse}" />
+            </Style>
+
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorSecondary}" />
+            </Style>
+
+            <Style x:Key="DangerButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorDanger}" />
+            </Style>
+
+
+        </ResourceDictionary>
+
+
+
+    </Application.Resources>
 </prism:PrismApplication>

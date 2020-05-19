@@ -2,6 +2,7 @@
 using Prism.Ioc;
 using Ruteros.Prism.ViewModels;
 using Ruteros.Prism.Views;
+using Syncfusion.Licensing;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,7 +22,11 @@ namespace Ruteros.Prism
 
         protected override async void OnInitialized()
         {
+            SyncfusionLicenseProvider.RegisterLicense("MjM2Mjk0QDMxMzgyZTMxMmUzMGxTVlFITXpHWXA5Z1BGSGFoend5eGdnZ1RiN0JjdkozUStwVktEV0wrZVU9");
+
             InitializeComponent();
+
+
 
             await NavigationService.NavigateAsync("/RuterosMasterDetailPage/NavigationPage/HomePage");
         }
