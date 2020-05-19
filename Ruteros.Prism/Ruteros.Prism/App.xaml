@@ -8,8 +8,8 @@
         <ResourceDictionary>
 
             <!-- Parameters -->
-            <x:String x:Key="UrlAPI">https://ruterosweb.azurewebsites.net/</x:String>
-            <x:String x:Key="UrlNoImage">https://ruterosweb.azurewebsites.net/noimage.png</x:String>
+            <x:String x:Key="UrlAPI">https://ruteroswebitm.azurewebsites.net/</x:String>
+            <x:String x:Key="UrlNoImage">https://ruteroswebitm.azurewebsites.net/noimage.png</x:String>
 
             <!-- Colors -->
             <Color x:Key="ColorBackgroud">#FFFFFF</Color>
