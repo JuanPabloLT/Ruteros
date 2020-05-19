@@ -26,8 +26,10 @@ namespace Ruteros.Web.Data
             await _dataContext.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
             await CheckUserAsync("1010", "Marcos", "Del Rio", "marcosdelrio25@gmail.com", "350 634 2747", UserType.Admin);
+            await CheckUserAsync("7070", "Juan Pablo", "Londoño Tobon", "pablo18970@gmail.com", "319 627 1487", UserType.Admin);
             var driver = await CheckUserAsync("2020", "Marcos", "Del Rio", "marcosdaviddelrio@hotmail.com", "350 634 2747", UserType.Driver);
-            var user2 = await CheckUserAsync("4040", "Marcos", "Del Rio", "marcosdel244642@correo.itm.edu.co", "350 634 2747", UserType.Driver);
+            var driver2 = await CheckUserAsync("4040", "Marcos", "Del Rio", "marcosdel244642@correo.itm.edu.co", "350 634 2747", UserType.Driver);
+            var driver8 = await CheckUserAsync("8080", "Juan Pablo", "Londoño Tobon", "pablo18970@hotmail.com", "319 627 1487", UserType.Driver);
             //await CheckTaxisAsync(driver, user1, user2);
         }
 
