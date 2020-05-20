@@ -258,4 +258,7 @@
   <data name="FromGallery" xml:space="preserve">
     <value>Elige de la galería</value>
   </data>
+  <data name="PasswordRecover" xml:space="preserve">
+    <value>Recuperar la clave</value>
+  </data>
 </root>

@@ -18,6 +18,8 @@ namespace Ruteros.Prism.Helpers
 
         public static string Culture { get; set; }
 
+        public static string PasswordRecover => Resource.PasswordRecover;
+
         public static string PictureSource => Resource.PictureSource;
 
         public static string Cancel => Resource.Cancel;
