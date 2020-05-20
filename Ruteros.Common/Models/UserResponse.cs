@@ -25,7 +25,8 @@ namespace Ruteros.Common.Models
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
 
         public string PictureFullPath => string.IsNullOrEmpty(PicturePath)
-            ? "https://ruterosweb.azurewebsites.net//images/noimage.png"
-            : $"https://zulutaxi.blob.core.windows.net/users/{PicturePath}";
+        ? "https://ruteroswebitm.azurewebsites.net//images/noimage.png"
+        : $"https://ruteroswebitm.azurewebsites.net{PicturePath.Substring(1)}";
+
     }
 }

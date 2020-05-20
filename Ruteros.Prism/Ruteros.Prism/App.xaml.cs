@@ -1,5 +1,6 @@
 ﻿using Prism;
 using Prism.Ioc;
+using Ruteros.Common.Helpers;
 using Ruteros.Common.Services;
 using Ruteros.Prism.ViewModels;
 using Ruteros.Prism.Views;
@@ -35,6 +36,7 @@ namespace Ruteros.Prism
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<IApiService, ApiService>();
+            containerRegistry.Register<IRegexHelper, RegexHelper>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<RuterosMasterDetailPage, RuterosMasterDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
@@ -42,6 +44,7 @@ namespace Ruteros.Prism
             containerRegistry.RegisterForNavigation<ShippingPage, ShippingPageViewModel>();
             containerRegistry.RegisterForNavigation<ModifyUserPage, ModifyUserPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
         }
     }
 }

@@ -5,6 +5,7 @@ using Ruteros.Common.Helpers;
 using Ruteros.Common.Models;
 using Ruteros.Common.Services;
 using Ruteros.Prism.Helpers;
+using Ruteros.Prism.Views;
 
 namespace Ruteros.Prism.ViewModels
 {
@@ -126,8 +127,9 @@ namespace Ruteros.Prism.ViewModels
 
         }
 
-        private void RegisterAsync()
+        private async void RegisterAsync()
         {
+            await _navigationService.NavigateAsync(nameof(RegisterPage));
         }
     }
 
