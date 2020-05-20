@@ -50,7 +50,7 @@
                 </Grid>
                 <Label FontAttributes="Bold"
                        HorizontalOptions="Center" 
-                       Text="i18n:Translate ForgotPassword}"
+                       Text="{i18n:Translate ForgotPassword}"
                        TextColor="{StaticResource ColorAccent}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
@@ -76,7 +76,7 @@
                 	                   HorizontalOptions="Center"
                 	                   TextColor="{StaticResource ColorFontInverse}"
                 	                   IsVisible="{Binding IsRunning}"
-                	                   Title="i18n:Translate Loading}"
+                	                   Title="{i18n:Translate Loading}"
                 	                   VerticalOptions="Center"
                 	                   ViewBoxWidth="80"
                 	                   ViewBoxHeight="80" />
