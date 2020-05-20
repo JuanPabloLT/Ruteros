@@ -124,6 +124,69 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm new password.
+        /// </summary>
+        public static string ConfirmNewPassword {
+            get {
+                return ResourceManager.GetString("ConfirmNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must confirm the new password.
+        /// </summary>
+        public static string ConfirmNewPasswordError {
+            get {
+                return ResourceManager.GetString("ConfirmNewPasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password does not match.
+        /// </summary>
+        public static string ConfirmNewPasswordError2 {
+            get {
+                return ResourceManager.GetString("ConfirmNewPasswordError2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        public static string ConfirmNewPasswordPlaceHolder {
+            get {
+                return ResourceManager.GetString("ConfirmNewPasswordPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current password.
+        /// </summary>
+        public static string CurrentPassword {
+            get {
+                return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter the current password.
+        /// </summary>
+        public static string CurrentPasswordError {
+            get {
+                return ResourceManager.GetString("CurrentPasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current password.
+        /// </summary>
+        public static string CurrentPasswordPlaceHolder {
+            get {
+                return ResourceManager.GetString("CurrentPasswordPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document.
         /// </summary>
         public static string Document {
@@ -295,7 +358,7 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LoginError.
+        ///   Looks up a localized string similar to Email or password incorrect.
         /// </summary>
         public static string LoginError {
             get {
@@ -318,6 +381,33 @@ namespace Ruteros.Prism.Resources {
         public static string ModifyUser {
             get {
                 return ResourceManager.GetString("ModifyUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a new password.
+        /// </summary>
+        public static string NewPasswordError {
+            get {
+                return ResourceManager.GetString("NewPasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        public static string NewPasswordPlaceHolder {
+            get {
+                return ResourceManager.GetString("NewPasswordPlaceHolder", resourceCulture);
             }
         }
         

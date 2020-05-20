@@ -10,6 +10,7 @@ using Ruteros.Prism.Helpers;
 using Xamarin.Forms;
 using Ruteros.Common.Services;
 using Ruteros.Common.Enums;
+using Ruteros.Prism.Views;
 
 namespace Ruteros.Prism.ViewModels
 {
@@ -25,6 +26,7 @@ namespace Ruteros.Prism.ViewModels
         private MediaFile _file;
         private DelegateCommand _changeImageCommand;
         private DelegateCommand _saveCommand;
+        private DelegateCommand _changePasswordCommand;
 
         public ModifyUserPageViewModel(
             INavigationService navigationService,
@@ -41,9 +43,16 @@ namespace Ruteros.Prism.ViewModels
             Image = User.PictureFullPath;
         }
 
+        public DelegateCommand ChangePasswordCommand => _changePasswordCommand ?? (_changePasswordCommand = new DelegateCommand(ChangePasswordAsync));
+
         public DelegateCommand ChangeImageCommand => _changeImageCommand ?? (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
 
         public DelegateCommand SaveCommand => _saveCommand ?? (_saveCommand = new DelegateCommand(SaveAsync));
+
+        private async void ChangePasswordAsync()
+        {
+            await _navigationService.NavigateAsync(nameof(ChangePasswordPage));
+        }
 
         public ImageSource Image
         {
