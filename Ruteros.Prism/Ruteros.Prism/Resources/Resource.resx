@@ -300,4 +300,7 @@
   <data name="NewPasswordPlaceHolder" xml:space="preserve">
     <value>New password</value>
   </data>
+  <data name="StartTrip" xml:space="preserve">
+    <value>Start trip</value>
+  </data>
 </root>

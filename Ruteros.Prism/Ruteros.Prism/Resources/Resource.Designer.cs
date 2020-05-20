@@ -583,6 +583,15 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start trip.
+        /// </summary>
+        public static string StartTrip {
+            get {
+                return ResourceManager.GetString("StartTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to See trip history.
         /// </summary>
         public static string TripHistory {

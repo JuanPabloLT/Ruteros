@@ -39,6 +39,7 @@ namespace Ruteros.Prism.Helpers
         public static string NewPasswordPlaceHolder => Resource.NewPasswordPlaceHolder;
 
         public static string Save => Resource.Save;
+        public static string StartTrip => Resource.StartTrip;
 
         public static string ChangePassword => Resource.ChangePassword;
 
