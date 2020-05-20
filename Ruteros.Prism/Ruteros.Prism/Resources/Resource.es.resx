@@ -246,4 +246,16 @@
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="PictureSource" xml:space="preserve">
+    <value>Fuente de la imagen</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="FromCamera" xml:space="preserve">
+    <value>Tomar con la cámara</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>Elige de la galería</value>
+  </data>
 </root>

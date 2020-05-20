@@ -7,7 +7,8 @@ using Ruteros.Common.Models;
 using Ruteros.Common.Services;
 using Ruteros.Prism.Helpers;
 using Xamarin.Forms;
-
+using Plugin.Media.Abstractions;
+using Plugin.Media;
 
 namespace Ruteros.Prism.ViewModels
 {
@@ -16,6 +17,7 @@ namespace Ruteros.Prism.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IRegexHelper _regexHelper;
         private readonly IApiService _apiService;
+        private readonly IFilesHelper _filesHelper;
         private ImageSource _image;
         private UserRequest _user;
         private Role _role;
@@ -23,15 +25,19 @@ namespace Ruteros.Prism.ViewModels
         private bool _isRunning;
         private bool _isEnabled;
         private DelegateCommand _registerCommand;
+        private MediaFile _file;
+        private DelegateCommand _changeImageCommand;
 
         public RegisterPageViewModel(
             INavigationService navigationService,
             IRegexHelper regexHelper,
-            IApiService apiService) : base(navigationService)
+            IApiService apiService,
+            IFilesHelper filesHelper) : base(navigationService)
         {
             _navigationService = navigationService;
             _regexHelper = regexHelper;
             _apiService = apiService;
+            _filesHelper = filesHelper;
             Title = Languages.Register;
             Image = App.Current.Resources["UrlNoImage"].ToString();
             IsEnabled = true;
@@ -39,6 +45,7 @@ namespace Ruteros.Prism.ViewModels
             Roles = new ObservableCollection<Role>(CombosHelper.GetRoles());
         }
 
+        public DelegateCommand ChangeImageCommand => _changeImageCommand ?? (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
         public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(RegisterAsync));
 
         public ImageSource Image
@@ -95,7 +102,12 @@ namespace Ruteros.Prism.ViewModels
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
                 return;
             }*/
-
+            byte[] imageArray = null;
+            if (_file != null)
+            {
+                imageArray = _filesHelper.ReadFully(_file.GetStream());
+            }
+            User.PictureArray = imageArray;
             User.UserTypeId = Role.Id;
             User.CultureInfo = Languages.Culture;
             Response response = await _apiService.RegisterUserAsync(url, "/api", "/Account", User);
@@ -112,6 +124,50 @@ namespace Ruteros.Prism.ViewModels
             await _navigationService.GoBackAsync();
 
         }
+
+        private async void ChangeImageAsync()
+        {
+            await CrossMedia.Current.Initialize();
+
+            string source = await Application.Current.MainPage.DisplayActionSheet(
+                Languages.PictureSource,
+                Languages.Cancel,
+                null,
+                Languages.FromGallery,
+                Languages.FromCamera);
+
+            if (source == Languages.Cancel)
+            {
+                _file = null;
+                return;
+            }
+
+            if (source == Languages.FromCamera)
+            {
+                _file = await CrossMedia.Current.TakePhotoAsync(
+                    new StoreCameraMediaOptions
+                    {
+                        Directory = "Sample",
+                        Name = "test.jpg",
+                        PhotoSize = PhotoSize.Small,
+                    }
+                );
+            }
+            else
+            {
+                _file = await CrossMedia.Current.PickPhotoAsync();
+            }
+
+            if (_file != null)
+            {
+                Image = ImageSource.FromStream(() =>
+                {
+                    System.IO.Stream stream = _file.GetStream();
+                    return stream;
+                });
+            }
+        }
+
 
         private async Task<bool> ValidateDataAsync()
         {
