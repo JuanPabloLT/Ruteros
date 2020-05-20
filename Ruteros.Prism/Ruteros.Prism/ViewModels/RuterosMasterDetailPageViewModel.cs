@@ -1,8 +1,11 @@
 ﻿using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Navigation;
 using Ruteros.Common.Helpers;
 using Ruteros.Common.Models;
+using Ruteros.Common.Services;
 using Ruteros.Prism.Helpers;
+using Ruteros.Prism.Views;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,13 +16,50 @@ namespace Ruteros.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private UserResponse _user;
+        private DelegateCommand _modifyUserCommand;
+        private readonly IApiService _apiService;
+        private static RuterosMasterDetailPageViewModel _instance;
 
-        public RuterosMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
+
+        public RuterosMasterDetailPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
+            _instance = this;
+            _apiService = apiService;
             _navigationService = navigationService;
             LoadUser();
             LoadMenus();            
         }
+
+        public static RuterosMasterDetailPageViewModel GetInstance()
+        {
+            return _instance;
+        }
+
+        public async void ReloadUser()
+        {
+            
+            string url = App.Current.Resources["UrlAPI"].ToString();
+            /*bool connection = await _apiService.CheckConnectionAsync(url);
+            if (!connection)
+            {
+                return;
+            }*/
+
+            UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            EmailRequest emailRequest = new EmailRequest
+            {
+                CultureInfo = Languages.Culture,
+                Email = user.Email
+            };
+
+            Response response = await _apiService.GetUserByEmail(url, "api", "/Account/GetUserByEmail", "bearer", token.Token, emailRequest);
+            UserResponse userResponse = (UserResponse)response.Result;
+            Settings.User = JsonConvert.SerializeObject(userResponse);
+            LoadUser();
+        }
+
+        public DelegateCommand ModifyUserCommand => _modifyUserCommand ?? (_modifyUserCommand = new DelegateCommand(ModifyUserAsync));
 
         public UserResponse User
         {
@@ -35,6 +75,10 @@ namespace Ruteros.Prism.ViewModels
             }
         }
 
+        private async void ModifyUserAsync()
+        {
+            await _navigationService.NavigateAsync($"/RuterosMasterDetailPage/NavigationPage/{nameof(ModifyUserPage)}");
+        }
 
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
