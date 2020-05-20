@@ -1,5 +1,6 @@
 ﻿using Prism;
 using Prism.Ioc;
+using Ruteros.Common.Services;
 using Ruteros.Prism.ViewModels;
 using Ruteros.Prism.Views;
 using Syncfusion.Licensing;
@@ -33,6 +34,7 @@ namespace Ruteros.Prism
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<RuterosMasterDetailPage, RuterosMasterDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
