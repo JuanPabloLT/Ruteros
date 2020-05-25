@@ -145,6 +145,28 @@ namespace Ruteros.Web.Controllers.API
             return Ok(_converterHelper.ToTripResponse(tripEntity));
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTripEntity([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var tripEntity = await _context.Trips
+                .Include(t => t.TripDetails)
+                .FirstOrDefaultAsync(t => t.Id == id);
+            if (tripEntity == null)
+            {
+                return NotFound();
+            }
+
+            _context.Trips.Remove(tripEntity);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
         /*[HttpPost]
         [Route("GetMyTrips")]
         public async Task<IActionResult> GetMyTrips([FromBody] MyTripsRequest request)
@@ -209,27 +231,7 @@ namespace Ruteros.Web.Controllers.API
             return NoContent();
         }*/
 
-        /*[HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTripEntity([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            var tripEntity = await _context.Trips
-                .Include(t => t.TripDetails)
-                .FirstOrDefaultAsync(t => t.Id == id);
-            if (tripEntity == null)
-            {
-                return NotFound();
-            }
-
-            _context.Trips.Remove(tripEntity);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }*/
 
 
 
