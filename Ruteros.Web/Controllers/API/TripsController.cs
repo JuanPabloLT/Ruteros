@@ -87,6 +87,39 @@ namespace Ruteros.Web.Controllers.API
            return Ok(_converterHelper.ToTripResponse(tripEntity));
        }
 
+        [HttpPost]
+        [Route("CompleteTrip")]
+        public async Task<IActionResult> CompleteTrip([FromBody] CompleteTripRequest completeTripRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            TripEntity trip = await _context.Trips
+                .Include(t => t.TripDetails)
+                .FirstOrDefaultAsync(t => t.Id == completeTripRequest.TripId);
+            if (trip == null)
+            {
+                return BadRequest("Trip not found.");
+            }
+
+            trip.EndDate = DateTime.UtcNow;
+            trip.Remarks = completeTripRequest.Remarks;
+            trip.Target = completeTripRequest.Target;
+            trip.TargetLatitude = completeTripRequest.TargetLatitude;
+            trip.TargetLongitude = completeTripRequest.TargetLongitude;
+            trip.TripDetails.Add(new TripDetailEntity
+            {
+                Date = DateTime.UtcNow,
+                Latitude = completeTripRequest.TargetLatitude,
+                Longitude = completeTripRequest.TargetLongitude
+            });
+            _context.Trips.Update(trip);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
         /*[HttpPost]
         [Route("GetMyTrips")]
         public async Task<IActionResult> GetMyTrips([FromBody] MyTripsRequest request)
@@ -194,39 +227,6 @@ namespace Ruteros.Web.Controllers.API
 
 
 
-        /*[HttpPost]
-        [Route("CompleteTrip")]
-        public async Task<IActionResult> CompleteTrip([FromBody] CompleteTripRequest completeTripRequest)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            TripEntity trip = await _context.Trips
-                .Include(t => t.TripDetails)
-                .FirstOrDefaultAsync(t => t.Id == completeTripRequest.TripId);
-            if (trip == null)
-            {
-                return BadRequest("Trip not found.");
-            }
-
-            trip.EndDate = DateTime.UtcNow;
-            trip.Qualification = completeTripRequest.Qualification;
-            trip.Remarks = completeTripRequest.Remarks;
-            trip.Target = completeTripRequest.Target;
-            trip.TargetLatitude = completeTripRequest.TargetLatitude;
-            trip.TargetLongitude = completeTripRequest.TargetLongitude;
-            trip.TripDetails.Add(new TripDetailEntity
-            {
-                Date = DateTime.UtcNow,
-                Latitude = completeTripRequest.TargetLatitude,
-                Longitude = completeTripRequest.TargetLongitude
-            });
-
-            _context.Trips.Update(trip);
-            await _context.SaveChangesAsync();
-            return NoContent();
-        }*/
     }
 }
