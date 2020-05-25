@@ -10,7 +10,15 @@ namespace Ruteros.Web.Helpers
 {
     public interface IConverterHelper
     {
+        //RESPONSES
         UserResponse ToUserResponse(UserEntity user);
+        TripResponse ToTripResponse(TripEntity tripEntity);
+        WarehouseResponse ToWarehouseResponse(WarehouseEntity warehouseEntity);
+        ShippingResponse ToShippingResponse(ShippingEntity shippingEntity);
+        VehicleResponse ToVehicleResponse(VehicleEntity vehicleEntity);
+        ShippingDetailResponse ToShippingDetailResponse(ShippingDetailEntity shippingDetailEntity);
+
+        //ENTITIES AND VIEW MODELS
         VehicleEntity ToVehicleEntity(VehicleViewModel model, string path, bool isNew);
         VehicleViewModel ToVehicleViewModel(VehicleEntity vehicleEntity);
         Task<ShippingDetailEntity> ToShippingDetailEntity(ShippingDetailViewModel model, string path, bool isNew);
