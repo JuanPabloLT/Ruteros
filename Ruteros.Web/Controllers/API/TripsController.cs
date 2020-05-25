@@ -120,6 +120,31 @@ namespace Ruteros.Web.Controllers.API
             return NoContent();
         }
 
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetTripEntity([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            TripEntity tripEntity = await _context.Trips
+                .Include(t => t.TripDetails)
+                .Include(t => t.Shipping)
+                .ThenInclude(t => t.ShippingDetails)
+                .Include(t => t.Vehicle)
+                .Include(t => t.Warehouse)
+                .Include(t => t.User)
+                .FirstOrDefaultAsync(t => t.Id == id);
+            if (tripEntity == null)
+            {
+                return BadRequest("Trip not found.");
+            }
+
+            return Ok(_converterHelper.ToTripResponse(tripEntity));
+        }
+
         /*[HttpPost]
         [Route("GetMyTrips")]
         public async Task<IActionResult> GetMyTrips([FromBody] MyTripsRequest request)
@@ -206,24 +231,7 @@ namespace Ruteros.Web.Controllers.API
             return NoContent();
         }*/
 
-        /*[HttpGet("{id}")]
-        public async Task<IActionResult> GetTripEntity([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            TripEntity tripEntity = await _context.Trips
-                .Include(t => t.TripDetails)
-                .FirstOrDefaultAsync(t => t.Id == id);
-            if (tripEntity == null)
-            {
-                return BadRequest("Trip not found.");
-            }
-
-            return Ok(_converterHelper.ToTripResponse(tripEntity));
-        }*/
 
 
 
