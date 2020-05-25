@@ -14,7 +14,7 @@ using Ruteros.Web.Helpers;
 namespace Ruteros.Web.Controllers.API
 {
     [Route("api/[controller]")]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class TripsController : ControllerBase
     {
