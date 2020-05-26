@@ -160,6 +160,15 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please, check your internet connection...!.
+        /// </summary>
+        public static string ConnectionError {
+            get {
+                return ResourceManager.GetString("ConnectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current password.
         /// </summary>
         public static string CurrentPassword {

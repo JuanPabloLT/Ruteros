@@ -67,7 +67,7 @@
                            Placeholder="{i18n:Translate AddressPlaceHolder}"
                            Text="{Binding Source}"/>
                     <ImageButton Command="{Binding GetAddressCommand}"
-                                 Source="ic_airport_shuttle"/>
+                                 Source="ic_history"/>
                 </StackLayout>
             </Grid>
             <maps:Map x:Name="MyMap"

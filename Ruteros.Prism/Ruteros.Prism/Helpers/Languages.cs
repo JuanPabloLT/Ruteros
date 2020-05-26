@@ -52,7 +52,7 @@ namespace Ruteros.Prism.Helpers
         public static string PlaqueError2 => Resource.PlaqueError2;
         public static string WarehouseErrror1 => Resource.WarehouseErrror1;
         public static string ShippingError1 => Resource.ShippingError1;
-
+        public static string ConnectionError => Resource.ConnectionError;
         public static string ChangePassword => Resource.ChangePassword;
 
         public static string UserUpdated => Resource.UserUpdated;

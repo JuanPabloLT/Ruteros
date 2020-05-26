@@ -342,4 +342,7 @@
   <data name="WarehouseErrror1" xml:space="preserve">
     <value>You must enter a warehouse Id...</value>
   </data>
+  <data name="ConnectionError" xml:space="preserve">
+    <value>Please, check your internet connection...!</value>
+  </data>
 </root>

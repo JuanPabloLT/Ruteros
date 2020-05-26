@@ -5,6 +5,8 @@ namespace Ruteros.Common.Services
 {
     public interface IApiService
     {
+
+        //USERS
         Task<Response> ChangePasswordAsync(string urlBase, string servicePrefix, string controller, ChangePasswordRequest changePasswordRequest, string tokenType, string accessToken);
 
         Task<Response> GetTokenAsync(string urlBase, string servicePrefix, string controller, TokenRequest request);
@@ -17,6 +19,9 @@ namespace Ruteros.Common.Services
 
         Task<Response> PutAsync<T>(string urlBase, string servicePrefix, string controller, T model, string tokenType, string accessToken);
 
-        //bool CheckConnection();
+        Task<bool> CheckConnectionAsync(string url);
+
+        //TRIPS
+        Task<Response> NewTripAsync(string urlBase, string servicePrefix, string controller, TripRequest model, string tokenType, string accessToken);
     }
 }
