@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29721.120
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ruteros.Common", "Ruteros.Common\Ruteros.Common.csproj", "{57F9CF74-F6B7-4ED1-9310-52134AAF118A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ruteros.Common", "Ruteros.Common\Ruteros.Common.csproj", "{57F9CF74-F6B7-4ED1-9310-52134AAF118A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ruteros.Web", "Ruteros.Web\Ruteros.Web.csproj", "{982AAB5E-3704-41C6-9981-E6D889E3DEBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ruteros.Web", "Ruteros.Web\Ruteros.Web.csproj", "{982AAB5E-3704-41C6-9981-E6D889E3DEBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ruteros.Prism", "Ruteros.Prism\Ruteros.Prism\Ruteros.Prism.csproj", "{85956F0D-4546-4434-B52F-9B1016BF0036}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ruteros.Prism", "Ruteros.Prism\Ruteros.Prism\Ruteros.Prism.csproj", "{85956F0D-4546-4434-B52F-9B1016BF0036}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ruteros.Prism.Android", "Ruteros.Prism\Ruteros.Prism.Android\Ruteros.Prism.Android.csproj", "{A0FC3437-06E0-4F60-B242-E8841A6925F3}"
 EndProject

@@ -345,4 +345,22 @@
   <data name="ConnectionError" xml:space="preserve">
     <value>Please, check your internet connection...!</value>
   </data>
+  <data name="Comment1" xml:space="preserve">
+    <value>Returned goods</value>
+  </data>
+  <data name="Comment2" xml:space="preserve">
+    <value>Destination closed</value>
+  </data>
+  <data name="Comment3" xml:space="preserve">
+    <value>Shipping not delivered</value>
+  </data>
+  <data name="Comment4" xml:space="preserve">
+    <value>Road problems</value>
+  </data>
+  <data name="Comment5" xml:space="preserve">
+    <value>Successful delivery</value>
+  </data>
+  <data name="Comment6" xml:space="preserve">
+    <value>Other</value>
+  </data>
 </root>

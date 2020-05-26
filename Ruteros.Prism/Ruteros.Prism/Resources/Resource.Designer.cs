@@ -124,6 +124,60 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Returned goods.
+        /// </summary>
+        public static string Comment1 {
+            get {
+                return ResourceManager.GetString("Comment1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Destination closed.
+        /// </summary>
+        public static string Comment2 {
+            get {
+                return ResourceManager.GetString("Comment2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shipping not delivered.
+        /// </summary>
+        public static string Comment3 {
+            get {
+                return ResourceManager.GetString("Comment3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Road problems.
+        /// </summary>
+        public static string Comment4 {
+            get {
+                return ResourceManager.GetString("Comment4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successful delivery.
+        /// </summary>
+        public static string Comment5 {
+            get {
+                return ResourceManager.GetString("Comment5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string Comment6 {
+            get {
+                return ResourceManager.GetString("Comment6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm new password.
         /// </summary>
         public static string ConfirmNewPassword {

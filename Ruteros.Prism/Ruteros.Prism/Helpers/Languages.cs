@@ -55,6 +55,13 @@ namespace Ruteros.Prism.Helpers
         public static string ConnectionError => Resource.ConnectionError;
         public static string ChangePassword => Resource.ChangePassword;
 
+        public static string Comment1 => Resource.Comment1;
+        public static string Comment2 => Resource.Comment2;
+        public static string Comment3 => Resource.Comment3;
+        public static string Comment4 => Resource.Comment4;
+        public static string Comment5 => Resource.Comment5;
+        public static string Comment6 => Resource.Comment6;
+
         public static string UserUpdated => Resource.UserUpdated;
 
         public static string PasswordRecover => Resource.PasswordRecover;
