@@ -375,4 +375,43 @@
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="MyTrip" xml:space="preserve">
+    <value>My trip</value>
+  </data>
+  <data name="MyTrips" xml:space="preserve">
+    <value>My trips</value>
+  </data>
+  <data name="TripDetail" xml:space="preserve">
+    <value>Trip detail</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="CommentPlaceHolder" xml:space="preserve">
+    <value>Enter comment...</value>
+  </data>
+  <data name="DistanceTraveled" xml:space="preserve">
+    <value>Distance Traveled</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="GenericComment" xml:space="preserve">
+    <value>Generic Comment</value>
+  </data>
+  <data name="Remark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="Remarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="Target" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
 </root>

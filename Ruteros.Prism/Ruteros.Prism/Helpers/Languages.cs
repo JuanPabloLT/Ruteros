@@ -67,6 +67,22 @@ namespace Ruteros.Prism.Helpers
         public static string Confirmation => Resource.Confirmation;
         public static string CancelTripConfirm => Resource.CancelTripConfirm;
 
+        public static string MyTrip => Resource.MyTrip;
+        public static string MyTrips => Resource.MyTrips;
+        public static string TripDetail => Resource.TripDetail;
+
+        public static string StartDate => Resource.StartDate;
+        public static string EndDate => Resource.EndDate;
+        public static string Target => Resource.Target;
+        public static string DistanceTraveled => Resource.DistanceTraveled;
+        public static string Time => Resource.Time;
+        public static string Remarks => Resource.Remarks;
+        public static string CommentPlaceHolder => Resource.CommentPlaceHolder;
+        public static string Comment => Resource.Comment;
+        public static string GenericComment => Resource.GenericComment;
+        public static string Remark => Resource.Remark;
+
+
         public static string UserUpdated => Resource.UserUpdated;
 
         public static string PasswordRecover => Resource.PasswordRecover;

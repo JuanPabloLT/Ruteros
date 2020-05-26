@@ -133,6 +133,15 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        public static string Comment {
+            get {
+                return ResourceManager.GetString("Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Returned goods.
         /// </summary>
         public static string Comment1 {
@@ -183,6 +192,15 @@ namespace Ruteros.Prism.Resources {
         public static string Comment6 {
             get {
                 return ResourceManager.GetString("Comment6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter comment....
+        /// </summary>
+        public static string CommentPlaceHolder {
+            get {
+                return ResourceManager.GetString("CommentPlaceHolder", resourceCulture);
             }
         }
         
@@ -268,6 +286,15 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Distance Traveled.
+        /// </summary>
+        public static string DistanceTraveled {
+            get {
+                return ResourceManager.GetString("DistanceTraveled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document.
         /// </summary>
         public static string Document {
@@ -327,6 +354,15 @@ namespace Ruteros.Prism.Resources {
         public static string EmailPlaceHolder {
             get {
                 return ResourceManager.GetString("EmailPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End date.
+        /// </summary>
+        public static string EndDate {
+            get {
+                return ResourceManager.GetString("EndDate", resourceCulture);
             }
         }
         
@@ -399,6 +435,15 @@ namespace Ruteros.Prism.Resources {
         public static string FromGallery {
             get {
                 return ResourceManager.GetString("FromGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generic Comment.
+        /// </summary>
+        public static string GenericComment {
+            get {
+                return ResourceManager.GetString("GenericComment", resourceCulture);
             }
         }
         
@@ -480,6 +525,24 @@ namespace Ruteros.Prism.Resources {
         public static string ModifyUser {
             get {
                 return ResourceManager.GetString("ModifyUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My trip.
+        /// </summary>
+        public static string MyTrip {
+            get {
+                return ResourceManager.GetString("MyTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My trips.
+        /// </summary>
+        public static string MyTrips {
+            get {
+                return ResourceManager.GetString("MyTrips", resourceCulture);
             }
         }
         
@@ -718,6 +781,24 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remark.
+        /// </summary>
+        public static string Remark {
+            get {
+                return ResourceManager.GetString("Remark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string Remarks {
+            get {
+                return ResourceManager.GetString("Remarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Save {
@@ -763,11 +844,47 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start date.
+        /// </summary>
+        public static string StartDate {
+            get {
+                return ResourceManager.GetString("StartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start trip.
         /// </summary>
         public static string StartTrip {
             get {
                 return ResourceManager.GetString("StartTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target.
+        /// </summary>
+        public static string Target {
+            get {
+                return ResourceManager.GetString("Target", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        public static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip detail.
+        /// </summary>
+        public static string TripDetail {
+            get {
+                return ResourceManager.GetString("TripDetail", resourceCulture);
             }
         }
         

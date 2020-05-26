@@ -35,7 +35,7 @@
                                 ItemDisplayBinding="{Binding Name}"
                                 ItemsSource="{Binding Comments}"
                                 SelectedItem="{Binding Comment}"
-                                Title="{i18n:Translate CommnetPlaceHolder}"/>
+                                Title="{i18n:Translate CommentPlaceHolder}"/>
 
                         <Label Grid.Row="1"
                                Grid.Column="0" 

@@ -7,6 +7,8 @@
         public string Title { get; set; }
 
         public string PageName { get; set; }
+
+        public bool IsLoginRequired { get; set; }
     }
 
 }

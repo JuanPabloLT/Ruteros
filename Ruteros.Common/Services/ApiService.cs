@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ruteros.Common.Models;
 using Xamarin.Essentials;
+using System.Collections.Generic;
 
 namespace Ruteros.Common.Services
 {
@@ -203,6 +204,48 @@ namespace Ruteros.Common.Services
                 {
                     IsSuccess = false,
                     Message = ex.Message,
+                };
+            }
+        }
+
+        public async Task<Response> GetMyTrips(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, MyTripsRequest model)
+        {
+            try
+            {
+                string request = JsonConvert.SerializeObject(model);
+                StringContent content = new StringContent(request, Encoding.UTF8, "application/json");
+                HttpClient client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                string url = $"{servicePrefix}{controller}";
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = result,
+                    };
+                }
+
+                List<TripResponse> trips = JsonConvert.DeserializeObject<List<TripResponse>>(result);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = trips
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
                 };
             }
         }

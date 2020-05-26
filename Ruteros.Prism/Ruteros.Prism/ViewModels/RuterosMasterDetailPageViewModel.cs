@@ -95,8 +95,9 @@ namespace Ruteros.Prism.ViewModels
                 new Menu
                 {
                     Icon = "ic_history",
-                    PageName = "TripHistoryPage",
-                    Title = Languages.TripHistory
+                    PageName = "MyTripsPage",
+                    Title = Languages.TripHistory,
+                    IsLoginRequired = true
                 },
                 new Menu
                 {

@@ -32,7 +32,7 @@ namespace Ruteros.Common.Services
 
         Task<Response> DeleteAsync(string urlBase, string servicePrefix, string controller, int id, string tokenType, string accessToken);
 
-
+        Task<Response> GetMyTrips(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, MyTripsRequest model);
 
     }
 }
