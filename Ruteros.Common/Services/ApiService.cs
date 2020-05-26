@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+//using Xamarin.Essentials;
 
 namespace Ruteros.Common.Services
 {
@@ -38,6 +39,11 @@ namespace Ruteros.Common.Services
                 };
             }
         }
+
+        /*public bool CheckConnection()
+        {
+            return Connectivity.NetworkAccess == NetworkAccess.Internet;
+        }*/
 
         public async Task<Response> PutAsync<T>(string urlBase, string servicePrefix, string controller, T model, string tokenType, string accessToken)
         {

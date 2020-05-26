@@ -303,4 +303,43 @@
   <data name="StartTrip" xml:space="preserve">
     <value>Iniciar viaje</value>
   </data>
+  <data name="Source" xml:space="preserve">
+    <value>Origen</value>
+  </data>
+  <data name="EndTrip" xml:space="preserve">
+    <value>Fin de viaje</value>
+  </data>
+  <data name="GeolocationError" xml:space="preserve">
+    <value>Error de geolocalización!</value>
+  </data>
+  <data name="Plaque" xml:space="preserve">
+    <value>Placa</value>
+  </data>
+  <data name="PlaquePlaceHolder" xml:space="preserve">
+    <value>¡Introduzca la placa del vehículo...!</value>
+  </data>
+  <data name="Shipping" xml:space="preserve">
+    <value>Envío</value>
+  </data>
+  <data name="ShippingCodePlaceHolder" xml:space="preserve">
+    <value>Introduzca el código de envío...!</value>
+  </data>
+  <data name="Warehouse" xml:space="preserve">
+    <value>Almacén</value>
+  </data>
+  <data name="WarehouseIdPlaceHolder" xml:space="preserve">
+    <value>Introduzca el ID del almacén...!</value>
+  </data>
+  <data name="PlaqueError1" xml:space="preserve">
+    <value>Debes entrar en una placa.!</value>
+  </data>
+  <data name="PlaqueError2" xml:space="preserve">
+    <value>La placa debe comenzar con tres letras y terminar con tres números.</value>
+  </data>
+  <data name="ShippingError1" xml:space="preserve">
+    <value>Debe introducir un código de envío...!</value>
+  </data>
+  <data name="WarehouseErrror1" xml:space="preserve">
+    <value>Debe introducir un id de almacén...!</value>
+  </data>
 </root>

@@ -303,4 +303,43 @@
   <data name="StartTrip" xml:space="preserve">
     <value>Start trip</value>
   </data>
+  <data name="Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="EndTrip" xml:space="preserve">
+    <value>End Trip</value>
+  </data>
+  <data name="GeolocationError" xml:space="preserve">
+    <value>Geolocation Error</value>
+  </data>
+  <data name="Plaque" xml:space="preserve">
+    <value>Plaque</value>
+  </data>
+  <data name="PlaquePlaceHolder" xml:space="preserve">
+    <value>Enter vehicle plaque...</value>
+  </data>
+  <data name="Shipping" xml:space="preserve">
+    <value>Shipping</value>
+  </data>
+  <data name="ShippingCodePlaceHolder" xml:space="preserve">
+    <value>Enter shipping code...</value>
+  </data>
+  <data name="Warehouse" xml:space="preserve">
+    <value>Warehouse</value>
+  </data>
+  <data name="WarehouseIdPlaceHolder" xml:space="preserve">
+    <value>Enter warehouse id...</value>
+  </data>
+  <data name="PlaqueError1" xml:space="preserve">
+    <value>You must enter a plaque.</value>
+  </data>
+  <data name="PlaqueError2" xml:space="preserve">
+    <value>The plaque must start with three letters and end with three numbers.</value>
+  </data>
+  <data name="ShippingError1" xml:space="preserve">
+    <value>You must enter a shipping code...</value>
+  </data>
+  <data name="WarehouseErrror1" xml:space="preserve">
+    <value>You must enter a warehouse Id...</value>
+  </data>
 </root>

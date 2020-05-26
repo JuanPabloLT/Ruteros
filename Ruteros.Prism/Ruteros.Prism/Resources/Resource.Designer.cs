@@ -250,6 +250,15 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End Trip.
+        /// </summary>
+        public static string EndTrip {
+            get {
+                return ResourceManager.GetString("EndTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
@@ -309,6 +318,15 @@ namespace Ruteros.Prism.Resources {
         public static string FromGallery {
             get {
                 return ResourceManager.GetString("FromGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geolocation Error.
+        /// </summary>
+        public static string GeolocationError {
+            get {
+                return ResourceManager.GetString("GeolocationError", resourceCulture);
             }
         }
         
@@ -538,6 +556,42 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plaque.
+        /// </summary>
+        public static string Plaque {
+            get {
+                return ResourceManager.GetString("Plaque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a plaque..
+        /// </summary>
+        public static string PlaqueError1 {
+            get {
+                return ResourceManager.GetString("PlaqueError1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The plaque must start with three letters and end with three numbers..
+        /// </summary>
+        public static string PlaqueError2 {
+            get {
+                return ResourceManager.GetString("PlaqueError2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter vehicle plaque....
+        /// </summary>
+        public static string PlaquePlaceHolder {
+            get {
+                return ResourceManager.GetString("PlaquePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string Register {
@@ -583,6 +637,42 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shipping.
+        /// </summary>
+        public static string Shipping {
+            get {
+                return ResourceManager.GetString("Shipping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter shipping code....
+        /// </summary>
+        public static string ShippingCodePlaceHolder {
+            get {
+                return ResourceManager.GetString("ShippingCodePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a shipping code....
+        /// </summary>
+        public static string ShippingError1 {
+            get {
+                return ResourceManager.GetString("ShippingError1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source.
+        /// </summary>
+        public static string Source {
+            get {
+                return ResourceManager.GetString("Source", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start trip.
         /// </summary>
         public static string StartTrip {
@@ -615,6 +705,33 @@ namespace Ruteros.Prism.Resources {
         public static string UserUpdated {
             get {
                 return ResourceManager.GetString("UserUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warehouse.
+        /// </summary>
+        public static string Warehouse {
+            get {
+                return ResourceManager.GetString("Warehouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a warehouse Id....
+        /// </summary>
+        public static string WarehouseErrror1 {
+            get {
+                return ResourceManager.GetString("WarehouseErrror1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter warehouse id....
+        /// </summary>
+        public static string WarehouseIdPlaceHolder {
+            get {
+                return ResourceManager.GetString("WarehouseIdPlaceHolder", resourceCulture);
             }
         }
     }

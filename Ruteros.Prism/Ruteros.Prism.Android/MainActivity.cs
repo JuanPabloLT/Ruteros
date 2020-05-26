@@ -24,6 +24,7 @@ namespace Ruteros.Prism.Droid
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             new SfBusyIndicatorRenderer();
+            Xamarin.FormsMaps.Init(this,bundle);
             LoadApplication(new App(new AndroidInitializer()));
         }
 

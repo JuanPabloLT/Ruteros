@@ -40,6 +40,18 @@ namespace Ruteros.Prism.Helpers
 
         public static string Save => Resource.Save;
         public static string StartTrip => Resource.StartTrip;
+        public static string EndTrip => Resource.EndTrip;
+        public static string GeolocationError => Resource.GeolocationError;
+        public static string Plaque => Resource.Plaque;
+        public static string PlaquePlaceHolder => Resource.PlaquePlaceHolder;
+        public static string Shipping => Resource.Shipping;
+        public static string ShippingCodePlaceHolder => Resource.ShippingCodePlaceHolder;
+        public static string Warehouse => Resource.Warehouse;
+        public static string WarehouseIdPlaceHolder => Resource.WarehouseIdPlaceHolder;
+        public static string PlaqueError1 => Resource.PlaqueError1;
+        public static string PlaqueError2 => Resource.PlaqueError2;
+        public static string WarehouseErrror1 => Resource.WarehouseErrror1;
+        public static string ShippingError1 => Resource.ShippingError1;
 
         public static string ChangePassword => Resource.ChangePassword;
 
@@ -50,6 +62,7 @@ namespace Ruteros.Prism.Helpers
         public static string PictureSource => Resource.PictureSource;
 
         public static string Cancel => Resource.Cancel;
+        public static string Source => Resource.Source;
 
         public static string FromCamera => Resource.FromCamera;
 
