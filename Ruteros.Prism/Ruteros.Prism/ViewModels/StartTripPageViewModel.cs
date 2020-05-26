@@ -38,6 +38,8 @@ namespace Ruteros.Prism.ViewModels
         private TripDetailsRequest _tripDetailsRequest;
         private DelegateCommand _getAddressCommand;
         private DelegateCommand _startTripCommand;
+        private DelegateCommand _cancelTripCommand;
+
 
         public StartTripPageViewModel(INavigationService navigationService, IGeolocatorService geolocatorService, IApiService apiService)
             : base(navigationService)
@@ -56,6 +58,8 @@ namespace Ruteros.Prism.ViewModels
         public DelegateCommand GetAddressCommand => _getAddressCommand ?? (_getAddressCommand = new DelegateCommand(LoadSourceAsync));
 
         public DelegateCommand StartTripCommand => _startTripCommand ?? (_startTripCommand = new DelegateCommand(StartTripAsync));
+
+        public DelegateCommand CancelTripCommand => _cancelTripCommand ?? (_cancelTripCommand = new DelegateCommand(CancelTripAsync));
 
         public string Plaque { get; set; }
         public int WarehouseId { get; set; }
@@ -152,8 +156,7 @@ namespace Ruteros.Prism.ViewModels
             IsEnabled = false;
 
             string url = App.Current.Resources["UrlAPI"].ToString();
-            bool connection = await _apiService.CheckConnectionAsync(url);
-            if (!connection)
+            if (!_apiService.CheckConnection())
             {
                 IsRunning = false;
                 IsEnabled = true;
@@ -221,7 +224,7 @@ namespace Ruteros.Prism.ViewModels
                 { "tripId", _tripResponse.Id },
             };
 
-            //await _navigationService.NavigateAsync(nameof(EndTripPage), parameters);
+            await _navigationService.NavigateAsync(nameof(EndTripPage), parameters);
         }
 
 
@@ -332,6 +335,38 @@ namespace Ruteros.Prism.ViewModels
 
             return tripDetailsRequestCloned;
         }
+
+        private async void CancelTripAsync()
+        {
+            bool answer = await App.Current.MainPage.DisplayAlert(Languages.Confirmation, Languages.CancelTripConfirm, Languages.Yes, Languages.No);
+            if (!answer)
+            {
+                return;
+            }
+
+            IsRunning = true;
+            IsEnabled = false;
+
+            _timer.Stop();
+            if (!_apiService.CheckConnection())
+            {
+                IsRunning = false;
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.ConnectionError,
+                    Languages.Accept);
+                return;
+            }
+
+            _apiService.DeleteAsync(_url, "/api", "/Trips", _tripResponse.Id, "bearer", _token.Token);
+
+            IsRunning = false;
+            IsEnabled = true;
+
+            await _navigationService.GoBackToRootAsync();
+        }
+
 
     }
 }

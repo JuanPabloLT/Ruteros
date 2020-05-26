@@ -21,7 +21,6 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -67,17 +66,6 @@
                                FontSize="Medium"
                                FontAttributes="Bold"
                                Text="{Binding Time}"
-                               VerticalTextAlignment="Center"/>
-
-                        <Label Grid.Row="4"
-                               Grid.Column="0" 
-                               Text="{i18n:Translate ApproximateValue}"
-                               VerticalOptions="Center"/>
-                        <Label Grid.Row="4"
-                               Grid.Column="1"
-                               FontSize="Medium"
-                               FontAttributes="Bold"
-                               Text="{Binding Value}"
                                VerticalTextAlignment="Center"/>
                     </Grid>
                 </StackLayout>

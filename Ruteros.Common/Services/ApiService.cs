@@ -5,7 +5,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Ruteros.Common.Models;
-using Plugin.Connectivity;
 using Xamarin.Essentials;
 
 namespace Ruteros.Common.Services
@@ -170,6 +169,45 @@ namespace Ruteros.Common.Services
                 };
             }
         }
+
+        public async Task<Response> DeleteAsync(string urlBase, string servicePrefix, string controller, int id, string tokenType, string accessToken)
+        {
+            try
+            {
+                HttpClient client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                string url = $"{servicePrefix}{controller}/{id}";
+                HttpResponseMessage response = await client.DeleteAsync(url);
+                string answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer,
+                    };
+                }
+
+                return new Response
+                {
+                    IsSuccess = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+
         public async Task<Response> ChangePasswordAsync(string urlBase, string servicePrefix, string controller, ChangePasswordRequest changePasswordRequest, string tokenType, string accessToken)
         {
             try
@@ -196,16 +234,6 @@ namespace Ruteros.Common.Services
                     Message = ex.Message,
                 };
             }
-        }
-
-        public async Task<bool> CheckConnectionAsync(string url)
-        {
-            if (!CrossConnectivity.Current.IsConnected)
-            {
-                return false;
-            }
-
-            return await CrossConnectivity.Current.IsRemoteReachable(url);
         }
 
         public bool CheckConnection()

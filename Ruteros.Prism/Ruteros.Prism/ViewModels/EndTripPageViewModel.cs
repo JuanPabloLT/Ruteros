@@ -19,7 +19,6 @@ namespace Ruteros.Prism.ViewModels
         private int _tripId;
         private bool _isRunning;
         private bool _isEnabled;
-        private float _qualification;
         private Comment _comment;
         private ObservableCollection<Comment> _comments;
         private string _remark;

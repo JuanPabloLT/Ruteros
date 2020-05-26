@@ -363,4 +363,16 @@
   <data name="Comment6" xml:space="preserve">
     <value>Otros</value>
   </data>
+  <data name="CancelTripConfirm" xml:space="preserve">
+    <value>¿Desea cancelar el viaje?</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Viaje cancelado</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
 </root>

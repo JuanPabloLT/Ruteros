@@ -62,6 +62,11 @@ namespace Ruteros.Prism.Helpers
         public static string Comment5 => Resource.Comment5;
         public static string Comment6 => Resource.Comment6;
 
+        public static string Yes => Resource.Yes;
+        public static string No => Resource.No;
+        public static string Confirmation => Resource.Confirmation;
+        public static string CancelTripConfirm => Resource.CancelTripConfirm;
+
         public static string UserUpdated => Resource.UserUpdated;
 
         public static string PasswordRecover => Resource.PasswordRecover;

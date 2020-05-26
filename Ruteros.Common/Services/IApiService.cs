@@ -19,7 +19,6 @@ namespace Ruteros.Common.Services
 
         Task<Response> PutAsync<T>(string urlBase, string servicePrefix, string controller, T model, string tokenType, string accessToken);
 
-        Task<bool> CheckConnectionAsync(string url);
         bool CheckConnection();
 
         //TRIPS
@@ -31,7 +30,7 @@ namespace Ruteros.Common.Services
 
         Task<Response> GetTripAsync(string urlBase, string servicePrefix, string controller, int id, string tokenType, string accessToken);
 
-
+        Task<Response> DeleteAsync(string urlBase, string servicePrefix, string controller, int id, string tokenType, string accessToken);
 
 
 
