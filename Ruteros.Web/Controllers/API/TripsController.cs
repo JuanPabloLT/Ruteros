@@ -167,29 +167,7 @@ namespace Ruteros.Web.Controllers.API
             return NoContent();
         }
 
-        /*[HttpPost]
-        [Route("GetMyTrips")]
-        public async Task<IActionResult> GetMyTrips([FromBody] MyTripsRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var tripEntities = await _context.Trips
-                .Include(t => t.User)
-                .Include(t => t.TripDetails)
-                .Include(t => t.Taxi)
-                .Where(t => t.User.Id == request.UserId &&
-                            t.StartDate >= request.StartDate &&
-                            t.StartDate <= request.EndDate)
-                .OrderByDescending(t => t.StartDate)
-                .ToListAsync();
-
-            return Ok(_converterHelper.ToTripResponse(tripEntities));
-        }*/
-
-        /*[HttpPost]
+        [HttpPost]
         [Route("AddTripDetails")]
         public async Task<IActionResult> AddTripDetails([FromBody] TripDetailsRequest tripDetailsRequest)
         {
@@ -229,7 +207,102 @@ namespace Ruteros.Web.Controllers.API
             _context.Trips.Update(trip);
             await _context.SaveChangesAsync();
             return NoContent();
-        }*/
+        }
+
+        [HttpPost]
+        [Route("GetMyTrips")]
+        public async Task<IActionResult> GetMyTrips([FromBody] MyTripsRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var tripEntities = await _context.Trips
+                .Include(t => t.TripDetails)
+                .Include(t => t.Shipping)
+                .ThenInclude(t => t.ShippingDetails)
+                .Include(t => t.Vehicle)
+                .Include(t => t.Warehouse)
+                .Include(t => t.User)
+                .Where(t => t.User.Id == request.UserId &&
+                            t.StartDate >= request.StartDate &&
+                            t.StartDate <= request.EndDate)
+                .OrderByDescending(t => t.StartDate)
+                .ToListAsync();
+
+            return Ok(_converterHelper.ToTripResponse(tripEntities));
+        }
+
+        [HttpPost]
+        [Route("AddIncident")]
+        public async Task<IActionResult> AddIncident([FromBody] IncidentRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            UserEntity userEntity = await _userHelper.GetUserAsync(request.UserId);
+            if (userEntity == null)
+            {
+                return BadRequest("User doesn't exists.");
+            }
+
+            VehicleEntity vehicleEntity = await _context.Vehicles.FirstOrDefaultAsync(v => v.Plaque == request.Plaque);
+            if (vehicleEntity == null)
+            {
+                return BadRequest("Vehicle doesn't exists.");
+            }
+
+            ShippingEntity shippingEntity = await _context.Shippings.FirstOrDefaultAsync(s => s.Code == request.ShippingCode);
+            if (shippingEntity == null)
+            {
+                return BadRequest("Shipping doesn't exists.");
+            }
+
+            WarehouseEntity warehouseEntity = await _context.Warehouses.FirstOrDefaultAsync(w => w.Id == request.WarehouseId);
+            if (warehouseEntity == null)
+            {
+                return BadRequest("Warehouse doesn't exists.");
+            }
+
+            TripEntity tripEntity = new TripEntity
+            {
+                Source = request.Address,
+                SourceLatitude = request.Latitude,
+                SourceLongitude = request.Longitude,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow,
+                Remarks = request.Remarks,
+                Target = request.Address,
+                TargetLatitude = request.Latitude,
+                TargetLongitude = request.Longitude,
+                TripDetails = new List<TripDetailEntity>
+                {
+                    new TripDetailEntity
+                    {
+                        Date = DateTime.UtcNow,
+                        Latitude = request.Latitude,
+                        Longitude = request.Longitude
+                    },
+                    new TripDetailEntity
+                    {
+                        Date = DateTime.UtcNow,
+                        Latitude = request.Latitude,
+                        Longitude = request.Longitude
+                    }
+                },
+                User = userEntity,
+                Vehicle = vehicleEntity,
+                Warehouse = warehouseEntity,
+                Shipping = shippingEntity,
+            };
+
+            _context.Trips.Add(tripEntity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
 
 
 

@@ -13,6 +13,7 @@ namespace Ruteros.Web.Helpers
         //RESPONSES
         UserResponse ToUserResponse(UserEntity user);
         TripResponse ToTripResponse(TripEntity tripEntity);
+        List<TripResponse> ToTripResponse(List<TripEntity> tripEntities);
         WarehouseResponse ToWarehouseResponse(WarehouseEntity warehouseEntity);
         ShippingResponse ToShippingResponse(ShippingEntity shippingEntity);
         VehicleResponse ToVehicleResponse(VehicleEntity vehicleEntity);

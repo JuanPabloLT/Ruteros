@@ -48,7 +48,34 @@ namespace Ruteros.Web.Helpers
             };
         }
 
-
+        //TRIPResponseList
+        public List<TripResponse> ToTripResponse(List<TripEntity> tripEntities)
+        {
+            return tripEntities.Select(t => new TripResponse
+            {
+                EndDate = t.EndDate,
+                Id = t.Id,
+                Remarks = t.Remarks,
+                Source = t.Source,
+                SourceLatitude = t.SourceLatitude,
+                SourceLongitude = t.SourceLongitude,
+                StartDate = t.StartDate,
+                Target = t.Target,
+                TargetLatitude = t.TargetLatitude,
+                TargetLongitude = t.TargetLongitude,
+                User = ToUserResponse(t.User),
+                Vehicle = ToVehicleResponse(t.Vehicle),
+                Warehouse = ToWarehouseResponse(t.Warehouse),
+                Shipping = ToShippingResponse(t.Shipping),
+                TripDetails = t.TripDetails.Select(td => new TripDetailResponse
+                {
+                    Date = td.Date,
+                    Id = td.Id,
+                    Latitude = td.Latitude,
+                    Longitude = td.Longitude
+                }).ToList()
+            }).ToList();
+        }
 
         public async Task<ShippingDetailEntity> ToShippingDetailEntity(ShippingDetailViewModel model, string path, bool isNew)
         {
