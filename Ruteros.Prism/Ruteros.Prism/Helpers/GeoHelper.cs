@@ -26,7 +26,7 @@ namespace Ruteros.Prism.Helpers
             return unitOfLength.ConvertFromMiles(dist);
         }
 
-       public static TripSummary GetTripSummary(TripResponse trip)
+        public static TripSummary GetTripSummary(TripResponse trip)
         {
             try
             {

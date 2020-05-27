@@ -16,6 +16,7 @@ using System.Timers;
 using Xamarin.Essentials;
 using System.Linq;
 
+
 namespace Ruteros.Prism.ViewModels
 {
     public class StartTripPageViewModel : ViewModelBase
@@ -62,7 +63,7 @@ namespace Ruteros.Prism.ViewModels
         public DelegateCommand CancelTripCommand => _cancelTripCommand ?? (_cancelTripCommand = new DelegateCommand(CancelTripAsync));
 
         public string Plaque { get; set; }
-        public int WarehouseId { get; set; }
+        public string WarehouseId { get; set; }
         public string ShippingCode { get; set; }
 
         public bool IsSecondButtonVisible
@@ -109,13 +110,13 @@ namespace Ruteros.Prism.ViewModels
             IsEnabled = false;
             await _geolocatorService.GetLocationAsync();
 
-            /*if (_geolocatorService.Latitude == 0 && _geolocatorService.Longitude == 0)
+            if (_geolocatorService.Latitude == 0 && _geolocatorService.Longitude == 0)
             {
                 IsEnabled = true;
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.GeolocationError, Languages.Accept);
                 await _navigationService.GoBackAsync();
                 return;
-            }*/
+            }
 
             _position = new Position(_geolocatorService.Latitude, _geolocatorService.Longitude);
             Geocoder geoCoder = new Geocoder();
@@ -177,7 +178,7 @@ namespace Ruteros.Prism.ViewModels
                 Longitude = _geolocatorService.Longitude,
                 Plaque = Plaque,
                 ShippingCode = ShippingCode,
-                WarehouseId = WarehouseId,
+                WarehouseId = Int32.Parse(WarehouseId),
                 UserId = new Guid(user.Id)
             };
 

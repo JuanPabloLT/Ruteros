@@ -227,7 +227,7 @@ namespace Ruteros.Web.Controllers.API
                 .Include(t => t.User)
                 .Where(t => t.User.Id == request.UserId &&
                             t.StartDate >= request.StartDate &&
-                            t.StartDate <= request.EndDate)
+                            t.EndDate <= request.EndDate)
                 .OrderByDescending(t => t.StartDate)
                 .ToListAsync();
 

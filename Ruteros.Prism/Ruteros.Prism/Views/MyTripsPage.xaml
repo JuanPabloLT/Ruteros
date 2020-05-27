@@ -64,7 +64,7 @@
                        Text="*"/>
                 <Label Grid.Column="2"
                        FontAttributes="Bold"
-                       Text="{i18n:Translate Source}"/>
+                       Text="{i18n:Translate Target}"/>
             </Grid>
 
             <CollectionView ItemsSource="{Binding Trips}">
@@ -87,9 +87,9 @@
                             <Label Grid.Column="1"
                                    LineBreakMode="TailTruncation"
                                    MaxLines="2"
-                                   Text="{Binding Source}"/>
+                                   Text="{Binding Target}"/>
                             <Image Grid.Column="2" 
-                                   Source="ic_more_vert"/>
+                                   Source="ic_content_paste"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

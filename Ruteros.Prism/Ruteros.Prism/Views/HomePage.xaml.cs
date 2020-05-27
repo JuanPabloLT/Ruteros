@@ -1,6 +1,6 @@
-﻿using Plugin.Permissions;
+﻿
+using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ruteros.Common.Services;
 using Xamarin.Forms;
@@ -11,11 +11,14 @@ namespace Ruteros.Prism.Views
     public partial class HomePage : ContentPage
     {
         private readonly IGeolocatorService _geolocatorService;
+        private double _distance;
+        private Position _position;
 
         public HomePage(IGeolocatorService geolocatorService)
         {
             InitializeComponent();
             _geolocatorService = geolocatorService;
+            _distance = .2;
         }
 
         protected override void OnAppearing()
@@ -35,19 +38,15 @@ namespace Ruteros.Prism.Views
                 await _geolocatorService.GetLocationAsync();
                 if (_geolocatorService.Latitude != 0 && _geolocatorService.Longitude != 0)
                 {
-                    Position position = new Position(
-                        _geolocatorService.Latitude,
-                        _geolocatorService.Longitude);
-                    MoveMap(position);
+                    _position = new Position(_geolocatorService.Latitude, _geolocatorService.Longitude);
+                    MoveMap();
                 }
             }
         }
 
-        private void MoveMap(Position position)
+        private void MoveMap()
         {
-            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(
-                position,
-                Distance.FromKilometers(.5)));
+            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(_position, Distance.FromKilometers(_distance)));
         }
 
         private async Task<bool> CheckLocationPermisionsAsync()
@@ -71,6 +70,12 @@ namespace Ruteros.Prism.Views
             return permissionLocation == PermissionStatus.Granted ||
                    permissionLocationAlways == PermissionStatus.Granted ||
                    permissionLocationWhenInUse == PermissionStatus.Granted;
+        }
+
+        private void MySlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            _distance = e.NewValue;
+            MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(_position, Distance.FromKilometers(_distance)));
         }
     }
 }
