@@ -49,10 +49,10 @@ namespace Ruteros.Prism.ViewModels
             _geolocatorService = geolocatorService;
             _apiService = apiService;
             _tripDetailsRequest = new TripDetailsRequest { TripDetails = new List<TripDetailRequest>() };
+            _geoCoder = new Geocoder();
             Title = Languages.StartTrip;
             ButtonLabel = Languages.StartTrip;
             IsEnabled = true;
-            IsRunning = false;
             LoadSourceAsync();
         }
 
@@ -123,7 +123,7 @@ namespace Ruteros.Prism.ViewModels
             IEnumerable<string> sources = await geoCoder.GetAddressesForPositionAsync(_position);
             List<string> addresses = new List<string>(sources);
 
-            if (addresses.Count > 1)
+            if (addresses.Count > 0)
             {
                 Source = addresses[0];
             }
@@ -152,24 +152,19 @@ namespace Ruteros.Prism.ViewModels
 
         private async Task BeginTripAsync()
         {
-
             IsRunning = true;
             IsEnabled = false;
 
-            string url = App.Current.Resources["UrlAPI"].ToString();
-            if (!_apiService.CheckConnection())
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
                 IsRunning = false;
                 IsEnabled = true;
-                await App.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.ConnectionError,
-                    Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
                 return;
             }
 
-            UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
-            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            _user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            _token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
             TripRequest tripRequest = new TripRequest
             {
@@ -177,21 +172,19 @@ namespace Ruteros.Prism.ViewModels
                 Latitude = _geolocatorService.Latitude,
                 Longitude = _geolocatorService.Longitude,
                 Plaque = Plaque,
+                UserId = new Guid(_user.Id),
                 ShippingCode = ShippingCode,
-                WarehouseId = Int32.Parse(WarehouseId),
-                UserId = new Guid(user.Id)
+                WarehouseId = Int32.Parse(WarehouseId)
             };
 
-            Response response = await _apiService.NewTripAsync(url, "/api", "/Trips", tripRequest, "bearer", token.Token);
+            _url = App.Current.Resources["UrlAPI"].ToString();
+            Response response = await _apiService.NewTripAsync(_url, "/api", "/Trips", tripRequest, "bearer", _token.Token);
 
             if (!response.IsSuccess)
             {
                 IsRunning = false;
                 IsEnabled = true;
-                await App.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    response.Message,
-                    Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 
@@ -204,7 +197,7 @@ namespace Ruteros.Prism.ViewModels
 
             _timer = new Timer
             {
-                Interval = 1000
+                Interval = 2000
             };
 
             _timer.Elapsed += Timer_Elapsed;
@@ -314,7 +307,6 @@ namespace Ruteros.Prism.ViewModels
                 SendTripDetailsAsync();
             }
         }
-
         private async Task SendTripDetailsAsync()
         {
             TripDetailsRequest tripDetailsRequestCloned = CloneTripDetailsRequest(_tripDetailsRequest);
@@ -336,7 +328,6 @@ namespace Ruteros.Prism.ViewModels
 
             return tripDetailsRequestCloned;
         }
-
         private async void CancelTripAsync()
         {
             bool answer = await App.Current.MainPage.DisplayAlert(Languages.Confirmation, Languages.CancelTripConfirm, Languages.Yes, Languages.No);
@@ -349,14 +340,12 @@ namespace Ruteros.Prism.ViewModels
             IsEnabled = false;
 
             _timer.Stop();
-            if (!_apiService.CheckConnection())
+
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
                 IsRunning = false;
                 IsEnabled = true;
-                await App.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.ConnectionError,
-                    Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
                 return;
             }
 

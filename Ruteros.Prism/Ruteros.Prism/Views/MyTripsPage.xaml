@@ -42,7 +42,7 @@
                              Grid.Row="0"
                              Grid.RowSpan="2"
                              Command="{Binding RefreshCommand}" 
-                             Source="ic_refresh"/>
+                             Source="ic_history"/>
             </Grid>
             <Grid>
                 <Grid.RowDefinitions>

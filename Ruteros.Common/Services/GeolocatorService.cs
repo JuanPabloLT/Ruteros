@@ -15,7 +15,7 @@ namespace Ruteros.Common.Services
             try
             {
                 var locator = CrossGeolocator.Current;
-                locator.DesiredAccuracy = 40;
+                locator.DesiredAccuracy = 30;
                 var location = await locator.GetPositionAsync();
                 Latitude = location.Latitude;
                 Longitude = location.Longitude;
@@ -28,4 +28,3 @@ namespace Ruteros.Common.Services
         }
     }
 }
-

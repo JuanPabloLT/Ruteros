@@ -8,6 +8,7 @@ using Ruteros.Common.Models;
 using Ruteros.Common.Services;
 using Ruteros.Prism.Helpers;
 using Xamarin.Forms.Maps;
+using Xamarin.Essentials;
 
 namespace Ruteros.Prism.ViewModels
 {
@@ -106,19 +107,16 @@ namespace Ruteros.Prism.ViewModels
             IsRunning = true;
             IsEnabled = false;
 
-            string url = App.Current.Resources["UrlAPI"].ToString();
-            if (!_apiService.CheckConnection())
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
                 IsRunning = false;
                 IsEnabled = true;
-                await App.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.ConnectionError,
-                    Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
                 return;
             }
 
             TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            string url = App.Current.Resources["UrlAPI"].ToString();
             Response response = await _apiService.GetTripAsync(url, "api", "/Trips", id, "bearer", token.Token);
 
             IsRunning = false;
@@ -137,17 +135,22 @@ namespace Ruteros.Prism.ViewModels
             TripSummary tripSummary = GeoHelper.GetTripSummary(trip);
             Distance = tripSummary.Distance;
             Time = $"{tripSummary.Time.ToString().Substring(0, 8)}";
-            Value = $"{tripSummary.Value:C0}";
+            if (tripSummary.Value == 5600)
+            {
+                Value = $"{tripSummary.Value:C0}";
+            }
+            else
+            {
+                Value = $"{tripSummary.Value:C0}";
+            }
         }
 
         private async void EndTripAsync()
         {
-
             IsRunning = true;
             IsEnabled = false;
 
-            string url = App.Current.Resources["UrlAPI"].ToString();
-            if (!_apiService.CheckConnection())
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
                 IsRunning = false;
                 IsEnabled = true;
@@ -182,6 +185,7 @@ namespace Ruteros.Prism.ViewModels
                 TripId = _tripId
             };
 
+            string url = App.Current.Resources["UrlAPI"].ToString();
             _apiService.CompleteTripAsync(url, "/api", "/Trips/CompleteTrip", completeTripRequest, "bearer", token.Token);
             await _navigationService.GoBackToRootAsync();
         }
