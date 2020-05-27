@@ -109,13 +109,13 @@ namespace Ruteros.Prism.ViewModels
             IsEnabled = false;
             await _geolocatorService.GetLocationAsync();
 
-            if (_geolocatorService.Latitude == 0 && _geolocatorService.Longitude == 0)
+            /*if (_geolocatorService.Latitude == 0 && _geolocatorService.Longitude == 0)
             {
                 IsEnabled = true;
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.GeolocationError, Languages.Accept);
                 await _navigationService.GoBackAsync();
                 return;
-            }
+            }*/
 
             _position = new Position(_geolocatorService.Latitude, _geolocatorService.Longitude);
             Geocoder geoCoder = new Geocoder();

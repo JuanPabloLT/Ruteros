@@ -27,6 +27,7 @@ namespace Ruteros.Prism.ViewModels
             Title = Languages.MyTrips;
             StartDate = DateTime.Today.AddDays(-7);
             EndDate = DateTime.Today;
+            IsRunning = false;
             LoadTripsAsync();
         }
 
@@ -50,7 +51,7 @@ namespace Ruteros.Prism.ViewModels
 
         private async void LoadTripsAsync()
         {
-            IsRunning = true;
+            //IsRunning = true;
 
             string url = App.Current.Resources["UrlAPI"].ToString();
             if (!_apiService.CheckConnection())
