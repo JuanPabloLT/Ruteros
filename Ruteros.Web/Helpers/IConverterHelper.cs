@@ -18,6 +18,7 @@ namespace Ruteros.Web.Helpers
         ShippingResponse ToShippingResponse(ShippingEntity shippingEntity);
         VehicleResponse ToVehicleResponse(VehicleEntity vehicleEntity);
         ShippingDetailResponse ToShippingDetailResponse(ShippingDetailEntity shippingDetailEntity);
+        TripDetailResponse ToTripDetailResponse(TripDetailEntity tripDetailEntity);
 
         //ENTITIES AND VIEW MODELS
         VehicleEntity ToVehicleEntity(VehicleViewModel model, string path, bool isNew);

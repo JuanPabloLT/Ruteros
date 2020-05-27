@@ -1,0 +1,126 @@
+﻿@model Ruteros.Web.Data.Entities.TripEntity
+
+@{
+    ViewData["Title"] = "TripDetails";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+
+<h2>Trip details</h2>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.User)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.User.FullNameWithDocument)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StartDateLocal)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StartDateLocal)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.EndDateLocal)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EndDateLocal)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Source)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Source)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Target)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Target)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Remarks)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Remarks)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Shipping)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Shipping.Code)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Vehicle)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Vehicle.Plaque)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Warehouse)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Warehouse.Address)
+                </dd>
+                <dt>
+                    # Trip Details
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TripDetails.Count)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-success">Back to List</a>
+</div>
+<br />
+<!--<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">TripDetails</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-responsive table-striped" id="MyTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Latitude
+                            </th>
+                            <th>
+                                Longitude
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.TripDetails)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateLocal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Latitude)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Longitude)
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>-->

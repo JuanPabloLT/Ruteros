@@ -210,6 +210,21 @@ namespace Ruteros.Web.Helpers
                 PicturePath = shippingDetailEntity.PicturePath
             };
         }
+
+        public TripDetailResponse ToTripDetailResponse(TripDetailEntity tripDetailEntity)
+        {
+            if (tripDetailEntity == null)
+            {
+                return null;
+            }
+
+            return new TripDetailResponse
+            {
+                Date = tripDetailEntity.Date,
+                Latitude = tripDetailEntity.Longitude,
+                Longitude = tripDetailEntity.Longitude
+            };
+        }
     }
 }
 
