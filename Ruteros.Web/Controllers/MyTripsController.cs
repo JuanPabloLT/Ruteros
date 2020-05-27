@@ -10,6 +10,7 @@ using Ruteros.Web.Data;
 using Ruteros.Web.Data.Entities;
 using Ruteros.Web.Helpers;
 using Ruteros.Web.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Ruteros.Web.Controllers
 {

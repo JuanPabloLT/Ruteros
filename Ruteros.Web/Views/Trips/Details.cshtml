@@ -62,17 +62,25 @@
                     @Html.DisplayFor(model => model.Vehicle.Plaque)
                 </dd>
                 <dt>
-                    @Html.DisplayNameFor(model => model.Warehouse)
+                    Warehouse name
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Warehouse.Name)
+                </dd>
+                <dt>
+                    Warehouse address
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Warehouse.Address)
                 </dd>
-                <dt>
-                    # Trip Details
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.TripDetails.Count)
-                </dd>
+
+                <!--<dt>
+        # Trip Details
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.TripDetails.Count)
+    </dd>
+        -->
             </dl>
         </div>
     </div>

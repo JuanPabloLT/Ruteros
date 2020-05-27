@@ -40,7 +40,6 @@ namespace Ruteros.Web.Controllers
                 .Include(t => t.Warehouse)
                 .Include(t => t.Shipping)
                 .ThenInclude(s => s.ShippingDetails)
-                //.Where(t => t.User.Document == ""))
                 .ToListAsync());
         }
 
