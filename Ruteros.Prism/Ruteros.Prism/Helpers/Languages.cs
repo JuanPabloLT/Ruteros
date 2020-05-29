@@ -82,6 +82,12 @@ namespace Ruteros.Prism.Helpers
         public static string GenericComment => Resource.GenericComment;
         public static string Remark => Resource.Remark;
 
+        public static string Id => Resource.Id;
+        public static string Code => Resource.Code;
+        public static string Quantity => Resource.Quantity;
+        public static string Description => Resource.Description;
+        public static string Picture => Resource.Picture;
+
 
         public static string UserUpdated => Resource.UserUpdated;
 

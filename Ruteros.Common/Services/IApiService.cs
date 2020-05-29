@@ -33,7 +33,11 @@ namespace Ruteros.Common.Services
         Task<Response> DeleteAsync(string urlBase, string servicePrefix, string controller, int id, string tokenType, string accessToken);
 
         Task<Response> GetMyTrips(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, MyTripsRequest model);
-
         Task<Response> GetMyTripsAdmin(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, MyTripsRequest model);
+
+
+        Task<Response> GetShippings(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, ShippingRequest model);
+        Task<Response> GetShippingDetails(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, ShippingDetailRequest model);
+        
     }
 }

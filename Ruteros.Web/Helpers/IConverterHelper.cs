@@ -16,8 +16,10 @@ namespace Ruteros.Web.Helpers
         List<TripResponse> ToTripResponse(List<TripEntity> tripEntities);
         WarehouseResponse ToWarehouseResponse(WarehouseEntity warehouseEntity);
         ShippingResponse ToShippingResponse(ShippingEntity shippingEntity);
+        List<ShippingResponse> ToShippingResponse(List<ShippingEntity> shippingEntities);
         VehicleResponse ToVehicleResponse(VehicleEntity vehicleEntity);
         ShippingDetailResponse ToShippingDetailResponse(ShippingDetailEntity shippingDetailEntity);
+        List<ShippingDetailResponse> ToShippingDetailResponse(List<ShippingDetailEntity> shippingDetailEntities);
         TripDetailResponse ToTripDetailResponse(TripDetailEntity tripDetailEntity);
 
         //ENTITIES AND VIEW MODELS

@@ -77,6 +77,34 @@ namespace Ruteros.Web.Helpers
             }).ToList();
         }
 
+
+        public List<ShippingResponse> ToShippingResponse(List<ShippingEntity> shippingEntities)
+        {
+            return shippingEntities.Select(t => new ShippingResponse
+            {
+                Id = t.Id,
+                Code = t.Code,
+                ShippingDetails = t.ShippingDetails.Select(td => new ShippingDetailResponse
+                {
+                    Id = td.Id,
+                    Quantity = td.Quantity,
+                    Description = td.Description,
+                    PicturePath = td.PicturePath
+                }).ToList()
+            }).ToList();
+        }
+
+        public List<ShippingDetailResponse> ToShippingDetailResponse(List<ShippingDetailEntity> shippingDetailEntities)
+        {
+            return shippingDetailEntities.Select(t => new ShippingDetailResponse
+            {
+                Id = t.Id,
+                Quantity = t.Quantity,
+                Description = t.Description,
+                PicturePath = t.PicturePath
+            }).ToList();
+        }
+
         public async Task<ShippingDetailEntity> ToShippingDetailEntity(ShippingDetailViewModel model, string path, bool isNew)
         {
             return new ShippingDetailEntity
@@ -112,7 +140,7 @@ namespace Ruteros.Web.Helpers
             };
         }
 
-        
+
         public VehicleViewModel ToVehicleViewModel(VehicleEntity vehicleEntity)
         {
             return new VehicleViewModel
@@ -173,7 +201,7 @@ namespace Ruteros.Web.Helpers
                 ShippingDetails = shippingEntity.ShippingDetails?.Select(sd => new ShippingDetailResponse
                 {
                     Id = sd.Id,
-                    Quantity= sd.Quantity,
+                    Quantity = sd.Quantity,
                     Description = sd.Description,
                     PicturePath = sd.PicturePath
                 }).ToList(),
@@ -229,4 +257,4 @@ namespace Ruteros.Web.Helpers
 }
 
 
-     
+

@@ -133,6 +133,15 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Code.
+        /// </summary>
+        public static string Code {
+            get {
+                return ResourceManager.GetString("Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         public static string Comment {
@@ -282,6 +291,15 @@ namespace Ruteros.Prism.Resources {
         public static string CurrentPasswordPlaceHolder {
             get {
                 return ResourceManager.GetString("CurrentPasswordPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
@@ -453,6 +471,15 @@ namespace Ruteros.Prism.Resources {
         public static string GeolocationError {
             get {
                 return ResourceManager.GetString("GeolocationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string Id {
+            get {
+                return ResourceManager.GetString("Id", resourceCulture);
             }
         }
         
@@ -700,6 +727,15 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Picture.
+        /// </summary>
+        public static string Picture {
+            get {
+                return ResourceManager.GetString("Picture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Picture source.
         /// </summary>
         public static string PictureSource {
@@ -741,6 +777,15 @@ namespace Ruteros.Prism.Resources {
         public static string PlaquePlaceHolder {
             get {
                 return ResourceManager.GetString("PlaquePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantity.
+        /// </summary>
+        public static string Quantity {
+            get {
+                return ResourceManager.GetString("Quantity", resourceCulture);
             }
         }
         

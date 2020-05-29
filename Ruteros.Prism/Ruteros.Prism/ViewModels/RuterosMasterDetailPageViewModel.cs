@@ -102,7 +102,7 @@ namespace Ruteros.Prism.ViewModels
                 new Menu
                 {
                     Icon = "ic_content_paste",
-                    PageName = "ShippingPage",
+                    PageName = "ShippingsPage",
                     Title = Languages.CheckShipping
                 },
                 new Menu

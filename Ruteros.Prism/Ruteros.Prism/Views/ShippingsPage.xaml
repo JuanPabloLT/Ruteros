@@ -7,9 +7,10 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
            	 xmlns:i18n="clr-namespace:Ruteros.Prism.Helpers"
-             x:Class="Ruteros.Prism.Views.ShippingPage"
+             x:Class="Ruteros.Prism.Views.ShippingsPage"
              BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
+
     <AbsoluteLayout>
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All" 
@@ -19,26 +20,42 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"
+                       Grid.Row="0"
+                       FontAttributes="Bold"
+                       Text="{i18n:Translate Shipping}"/>
+                <Entry Grid.Row="0" 
+                       Grid.Column="1"
+                       FontSize="18"
+                       HorizontalOptions="FillAndExpand"
+                       Placeholder="{i18n:Translate ShippingCodePlaceHolder}" 
+                       Text="{Binding Shipping}"/>
+                <ImageButton Grid.Column="2"
+                             Grid.Row="0"
+                             Grid.RowSpan="2"
+                             IsEnabled="{Binding IsEnabled}"
+                             Command="{Binding RefreshCommand}" 
+                             Source="ic_history"/>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*" />
-                    <ColumnDefinition Width="4*" />
-                    <ColumnDefinition Width="6*" />
-                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="8*" />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0"
                        FontAttributes="Bold"
                        Text="{i18n:Translate Id}"/>
                 <Label Grid.Column="1"
                        FontAttributes="Bold"
-                       Text="{i18n:Translate Quantity}"/>
-                <Label Grid.Column="2"
-                       FontAttributes="Bold"
-                       MaxLines="1"
-                       LineBreakMode="TailTruncation"
-                       Text="{i18n:Translate Description}"/>
-                <Label Grid.Column="3"
-                       FontAttributes="Bold"
-                       Text="{i18n:Translate Picture}"/>
+                       Text="{i18n:Translate Code}"/>
             </Grid>
+
             <CollectionView ItemsSource="{Binding Shippings}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"/>
@@ -46,25 +63,26 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectShipping2Command}"/>
+                            </Grid.GestureRecognizers>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="4*" />
                                 <ColumnDefinition Width="4*" />
-                                <ColumnDefinition Width="4*" />
-                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0"
                                    Text="{Binding Id}"/>
-                            <Label Grid.Column="0"
-                                   Text="{Binding Quantity}"/>
-                            <Label Grid.Column="0"
-                                   Text="{Binding Description}"/>
-                            <Label Grid.Column="0" 
-                                   Text="{Binding PicturePath}"/>
+                            <Label Grid.Column="1"
+                                   Text="{Binding Code}"/>
+                            <Image Grid.Column="2" 
+                                   Source="ic_content_paste"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
+
         <ActivityIndicator IsRunning="{Binding IsRunning}"
                            AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                            AbsoluteLayout.LayoutFlags="All"/>

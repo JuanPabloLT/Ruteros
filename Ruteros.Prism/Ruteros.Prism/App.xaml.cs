@@ -50,6 +50,7 @@ namespace Ruteros.Prism
             containerRegistry.RegisterForNavigation<MyTripsPage, MyTripsPageViewModel>();
             containerRegistry.RegisterForNavigation<MyTripPage, MyTripPageViewModel>();
             containerRegistry.RegisterForNavigation<TripDetailPage, TripDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<ShippingsPage, ShippingsPageViewModel>();
         }
     }
 }

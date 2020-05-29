@@ -414,4 +414,10 @@
   <data name="Remark" xml:space="preserve">
     <value>nota</value>
   </data>
+  <data name="Code" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id.</value>
+  </data>
 </root>
