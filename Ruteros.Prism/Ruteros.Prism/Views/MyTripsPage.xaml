@@ -67,6 +67,7 @@
                 <ImageButton Grid.Column="2"
                              Grid.Row="0"
                              Grid.RowSpan="2"
+                             IsEnabled="{Binding IsEnabled}"
                              Command="{Binding RefreshCommand}" 
                              Source="ic_history"/>
             </Grid>
@@ -128,7 +129,11 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
-       <!-- <busyindicator:SfBusyIndicator AnimationType="Gear" 
+
+        <ActivityIndicator IsRunning="{Binding IsRunning}"
+                           AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                           AbsoluteLayout.LayoutFlags="All"/>
+        <!-- <busyindicator:SfBusyIndicator AnimationType="Gear" 
                                         AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                 	                    AbsoluteLayout.LayoutFlags="All"
                 	                    BackgroundColor="{StaticResource ColorDanger}"

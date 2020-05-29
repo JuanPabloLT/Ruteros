@@ -75,6 +75,9 @@
                     Text="{i18n:Translate EndTrip}"
                     VerticalOptions="EndAndExpand"/>
         </StackLayout>
+        <ActivityIndicator IsRunning="{Binding IsRunning}"
+                           AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                           AbsoluteLayout.LayoutFlags="All"/>
         <!--<busyindicator:SfBusyIndicator AnimationType="Gear" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                 	                   AbsoluteLayout.LayoutFlags="All"

@@ -30,7 +30,7 @@ namespace Ruteros.Prism.ViewModels
         }
 
 
-        private void IsAdminAsync()
+        private async void IsAdminAsync()
         {
             UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
             if (user.UserType.ToString().Equals("Admin"))

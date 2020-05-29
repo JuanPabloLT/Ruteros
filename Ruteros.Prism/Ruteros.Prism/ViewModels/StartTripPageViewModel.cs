@@ -53,6 +53,7 @@ namespace Ruteros.Prism.ViewModels
             Title = Languages.StartTrip;
             ButtonLabel = Languages.StartTrip;
             IsEnabled = true;
+            IsRunning = false;
             LoadSourceAsync();
         }
 

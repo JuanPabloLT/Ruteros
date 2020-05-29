@@ -17,6 +17,7 @@ namespace Ruteros.Prism.ViewModels
         private readonly IApiService _apiService;
         private bool _isRunning;
         private bool _isAdmin;
+        private bool _isEnabled;
         private List<TripItemViewModel> _trips;
         private DelegateCommand _refreshCommand;
 
@@ -28,7 +29,10 @@ namespace Ruteros.Prism.ViewModels
             Title = Languages.MyTrips;
             StartDate = DateTime.Today.AddDays(-7);
             EndDate = DateTime.Today;
+            Document = "";
+            Shipping = "";
             IsRunning = false;
+            IsEnabled = true;
             LoadTripsAsync();
         }
 
@@ -47,6 +51,12 @@ namespace Ruteros.Prism.ViewModels
             set => SetProperty(ref _isRunning, value);
         }
 
+        public bool IsEnabled
+        {
+            get => _isEnabled;
+            set => SetProperty(ref _isEnabled, value);
+        }
+
         public bool IsAdmin
         {
             get => _isAdmin;
@@ -61,7 +71,8 @@ namespace Ruteros.Prism.ViewModels
 
         private async void LoadTripsAsync()
         {
-            //IsRunning = true;
+            IsRunning = true;
+            IsEnabled = false;
 
             string url = App.Current.Resources["UrlAPI"].ToString();
             if (!_apiService.CheckConnection())
@@ -96,12 +107,15 @@ namespace Ruteros.Prism.ViewModels
             
 
             IsRunning = false;
+            IsEnabled = true;
 
             if (!response.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
+
+            
 
             List<TripResponse> trips = (List<TripResponse>)response.Result;
             Trips = trips.Select(t => new TripItemViewModel(_navigationService)
