@@ -30,20 +30,20 @@ namespace Ruteros.Web.Controllers.API
         }
 
         [HttpPost]
-       public async Task<IActionResult> PostTripEntity([FromBody] TripRequest tripRequest)
-       {
-           if (!ModelState.IsValid)
-           {
-               return BadRequest(ModelState);
-           }
+        public async Task<IActionResult> PostTripEntity([FromBody] TripRequest tripRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-           UserEntity userEntity = await _userHelper.GetUserAsync(tripRequest.UserId);
-           if (userEntity == null)
-           {
-               return BadRequest("User doesn't exists.");
-           }
+            UserEntity userEntity = await _userHelper.GetUserAsync(tripRequest.UserId);
+            if (userEntity == null)
+            {
+                return BadRequest("User doesn't exists.");
+            }
 
-           VehicleEntity vehicleEntity = await _context.Vehicles.FirstOrDefaultAsync(v => v.Plaque == tripRequest.Plaque);
+            VehicleEntity vehicleEntity = await _context.Vehicles.FirstOrDefaultAsync(v => v.Plaque == tripRequest.Plaque);
             if (vehicleEntity == null)
             {
                 return BadRequest("Vehicle doesn't exists.");
@@ -82,10 +82,10 @@ namespace Ruteros.Web.Controllers.API
                 Shipping = shippingEntity,
             };
 
-           _context.Trips.Add(tripEntity);
-           await _context.SaveChangesAsync();
-           return Ok(_converterHelper.ToTripResponse(tripEntity));
-       }
+            _context.Trips.Add(tripEntity);
+            await _context.SaveChangesAsync();
+            return Ok(_converterHelper.ToTripResponse(tripEntity));
+        }
 
         [HttpPost]
         [Route("CompleteTrip")]
@@ -244,6 +244,58 @@ namespace Ruteros.Web.Controllers.API
             }
 
             var tripEntities = await _context.Trips
+                .ToListAsync(); 
+
+            if (request.Document != "" && request.Shipping == "")
+            {
+                tripEntities = await _context.Trips
+                   .Include(t => t.TripDetails)
+                   .Include(t => t.Shipping)
+                   .ThenInclude(t => t.ShippingDetails)
+                   .Include(t => t.Vehicle)
+                   .Include(t => t.Warehouse)
+                   .Include(t => t.User)
+                   .Where(t => t.StartDate >= request.StartDate &&
+                               t.EndDate <= request.EndDate
+                               && t.User.Document == request.Document)
+                   .OrderByDescending(t => t.StartDate)
+                   .ToListAsync();
+            }
+            else if(request.Document == "" && request.Shipping != "")
+            {
+                tripEntities = await _context.Trips
+                .Include(t => t.TripDetails)
+                .Include(t => t.Shipping)
+                .ThenInclude(t => t.ShippingDetails)
+                .Include(t => t.Vehicle)
+                .Include(t => t.Warehouse)
+                .Include(t => t.User)
+                .Where(t => t.StartDate >= request.StartDate &&
+                            t.EndDate <= request.EndDate
+                            && t.Shipping.Code == request.Shipping)
+                .OrderByDescending(t => t.StartDate)
+                .ToListAsync();
+            }
+            else if(request.Document != "" && request.Shipping != "")
+            {
+                tripEntities = await _context.Trips
+                .Include(t => t.TripDetails)
+                .Include(t => t.Shipping)
+                .ThenInclude(t => t.ShippingDetails)
+                .Include(t => t.Vehicle)
+                .Include(t => t.Warehouse)
+                .Include(t => t.User)
+                .Where(t => t.StartDate >= request.StartDate &&
+                            t.EndDate <= request.EndDate
+                            && t.Shipping.Code == request.Shipping
+                            && t.User.Document == request.Document)
+                .OrderByDescending(t => t.StartDate)
+                .ToListAsync();
+
+            }
+            else
+            {
+                tripEntities = await _context.Trips
                 .Include(t => t.TripDetails)
                 .Include(t => t.Shipping)
                 .ThenInclude(t => t.ShippingDetails)
@@ -254,6 +306,8 @@ namespace Ruteros.Web.Controllers.API
                             t.EndDate <= request.EndDate)
                 .OrderByDescending(t => t.StartDate)
                 .ToListAsync();
+            }
+
             return Ok(_converterHelper.ToTripResponse(tripEntities));
         }
 

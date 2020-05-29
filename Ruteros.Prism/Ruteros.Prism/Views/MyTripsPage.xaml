@@ -18,6 +18,8 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -32,12 +34,36 @@
                        Grid.Row="0"
                        FontAttributes="Bold"
                        Text="{i18n:Translate EndDate}"/>
+                <Label Grid.Column="0"
+                       Grid.Row="2"
+                       IsVisible="{Binding IsAdmin}"
+                       FontAttributes="Bold"
+                       Text="{i18n:Translate Document}"/>
+                <Label Grid.Column="0"
+                       Grid.Row="3"
+                       IsVisible="{Binding IsAdmin}"
+                       FontAttributes="Bold"
+                       Text="{i18n:Translate Shipping}"/>
                 <DatePicker  Grid.Column="0"
                              Grid.Row="1"
                              Date="{Binding StartDate}"/>
                 <DatePicker  Grid.Column="1"
                              Grid.Row="1"
                              Date="{Binding EndDate}"/>
+                <Entry Grid.Row="2" 
+                       Grid.Column="1"
+                       FontSize="18" 
+                       IsVisible="{Binding IsAdmin}"
+                       HorizontalOptions="FillAndExpand"
+                       Placeholder="{i18n:Translate DocumentPlaceHolder}" 
+                       Text="{Binding Document}"/>
+                <Entry Grid.Row="3" 
+                       Grid.Column="1"
+                       FontSize="18" 
+                       IsVisible="{Binding IsAdmin}"
+                       HorizontalOptions="FillAndExpand"
+                       Placeholder="{i18n:Translate ShippingCodePlaceHolder}" 
+                       Text="{Binding Shipping}"/>
                 <ImageButton Grid.Column="2"
                              Grid.Row="0"
                              Grid.RowSpan="2"
@@ -49,20 +75,24 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="4*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="4*" />
                     <ColumnDefinition Width="48" />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0"
                        FontAttributes="Bold"
-                       Text="{i18n:Translate StartDate}"/>
+                       Text="{i18n:Translate Document}"/>
                 <Label Grid.Column="1"
+                       FontAttributes="Bold"
+                       Text="{i18n:Translate StartDate}"/>
+                <Label Grid.Column="2"
                        FontAttributes="Bold"
                        MaxLines="1"
                        LineBreakMode="TailTruncation"
                        Text="*"/>
-                <Label Grid.Column="2"
+                <Label Grid.Column="3"
                        FontAttributes="Bold"
                        Text="{i18n:Translate Target}"/>
             </Grid>
@@ -78,17 +108,20 @@
                                 <TapGestureRecognizer Command="{Binding SelectTrip2Command}"/>
                             </Grid.GestureRecognizers>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="4*" />
                                 <ColumnDefinition Width="4*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0"
-                                   Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd HH:mm}'}"/>
+                                   Text="{Binding Document}"/>
                             <Label Grid.Column="1"
+                                   Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd HH:mm}'}"/>
+                            <Label Grid.Column="2"
                                    LineBreakMode="TailTruncation"
                                    MaxLines="2"
                                    Text="{Binding Target}"/>
-                            <Image Grid.Column="2" 
+                            <Image Grid.Column="3" 
                                    Source="ic_content_paste"/>
                         </Grid>
                     </DataTemplate>

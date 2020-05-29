@@ -32,6 +32,7 @@ namespace Ruteros.Common.Models
         public List<TripDetailResponse> TripDetails { get; set; }
 
         public UserResponse User { get; set; }
+        public string Document { get; set; }
         public VehicleResponse Vehicle { get; set; }
         public WarehouseResponse Warehouse { get; set; }
         public ShippingResponse Shipping { get; set; }

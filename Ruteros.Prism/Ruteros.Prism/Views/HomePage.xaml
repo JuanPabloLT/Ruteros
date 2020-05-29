@@ -20,6 +20,7 @@
                   MapType="Street"/>
         <StackLayout Padding="5">
             <Button Command="{Binding StartTripCommand}" 
+                    IsVisible="{Binding IsAdmin}"
                     Margin="10,0"
                     Text="{i18n:Translate StartTrip}"/>
         </StackLayout>

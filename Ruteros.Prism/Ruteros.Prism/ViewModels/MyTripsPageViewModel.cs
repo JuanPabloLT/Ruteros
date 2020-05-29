@@ -16,6 +16,7 @@ namespace Ruteros.Prism.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private bool _isRunning;
+        private bool _isAdmin;
         private List<TripItemViewModel> _trips;
         private DelegateCommand _refreshCommand;
 
@@ -37,10 +38,19 @@ namespace Ruteros.Prism.ViewModels
 
         public DateTime EndDate { get; set; }
 
+        public string Document { get; set; }
+        public string Shipping { get; set; }
+
         public bool IsRunning
         {
             get => _isRunning;
             set => SetProperty(ref _isRunning, value);
+        }
+
+        public bool IsAdmin
+        {
+            get => _isAdmin;
+            set => SetProperty(ref _isAdmin, value);
         }
 
         public List<TripItemViewModel> Trips
@@ -67,17 +77,21 @@ namespace Ruteros.Prism.ViewModels
             {
                 EndDate = EndDate.AddDays(1).ToUniversalTime(),
                 StartDate = StartDate.ToUniversalTime(),
-                UserId = user.Id
+                UserId = user.Id,
+                Document = Document,
+                Shipping = Shipping
             };
 
             Response response = new Response();
 
-            if (user.UserType.Equals("Admin")){
+            if (user.UserType.ToString().Equals("Admin")){
                 response = await _apiService.GetMyTripsAdmin(url, "api", "/Trips/GetMyTripsAdmin", "bearer", token.Token, request);
+                IsAdmin = true;
             }
             else
             {
                 response = await _apiService.GetMyTrips(url, "api", "/Trips/GetMyTrips", "bearer", token.Token, request);
+                IsAdmin = false;
             }
             
 
@@ -104,6 +118,7 @@ namespace Ruteros.Prism.ViewModels
                 TargetLongitude = t.TargetLongitude,
                 TripDetails = t.TripDetails,
                 User = t.User,
+                Document = t.User.Document,
                 Vehicle = t.Vehicle,
                 Warehouse = t.Warehouse,
                 Shipping = t.Shipping
