@@ -235,6 +235,29 @@ namespace Ruteros.Web.Controllers.API
         }
 
         [HttpPost]
+        [Route("GetMyTripsAdmin")]
+        public async Task<IActionResult> GetMyTripsAdmin([FromBody] MyTripsRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var tripEntities = await _context.Trips
+                .Include(t => t.TripDetails)
+                .Include(t => t.Shipping)
+                .ThenInclude(t => t.ShippingDetails)
+                .Include(t => t.Vehicle)
+                .Include(t => t.Warehouse)
+                .Include(t => t.User)
+                .Where(t => t.StartDate >= request.StartDate &&
+                            t.EndDate <= request.EndDate)
+                .OrderByDescending(t => t.StartDate)
+                .ToListAsync();
+            return Ok(_converterHelper.ToTripResponse(tripEntities));
+        }
+
+        [HttpPost]
         [Route("AddIncident")]
         public async Task<IActionResult> AddIncident([FromBody] IncidentRequest request)
         {

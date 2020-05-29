@@ -70,7 +70,16 @@ namespace Ruteros.Prism.ViewModels
                 UserId = user.Id
             };
 
-            Response response = await _apiService.GetMyTrips(url, "api", "/Trips/GetMyTrips", "bearer", token.Token, request);
+            Response response = new Response();
+
+            if (user.UserType.Equals("Admin")){
+                response = await _apiService.GetMyTripsAdmin(url, "api", "/Trips/GetMyTripsAdmin", "bearer", token.Token, request);
+            }
+            else
+            {
+                response = await _apiService.GetMyTrips(url, "api", "/Trips/GetMyTrips", "bearer", token.Token, request);
+            }
+            
 
             IsRunning = false;
 

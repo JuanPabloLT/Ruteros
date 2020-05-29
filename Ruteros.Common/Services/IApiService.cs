@@ -34,5 +34,6 @@ namespace Ruteros.Common.Services
 
         Task<Response> GetMyTrips(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, MyTripsRequest model);
 
+        Task<Response> GetMyTripsAdmin(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, MyTripsRequest model);
     }
 }

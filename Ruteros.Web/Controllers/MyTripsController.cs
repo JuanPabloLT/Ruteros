@@ -41,7 +41,7 @@ namespace Ruteros.Web.Controllers
                 .Include(t => t.Warehouse)
                 .Include(t => t.Shipping)
                 .ThenInclude(s => s.ShippingDetails)
-                .Where(t => t.User.Document == "7070")
+                .Where(t => t.User.Email == User.Identity.Name)
                 .ToListAsync());
         }
 
