@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Ruteros.Common.Models;
 using Xamarin.Essentials;
 using System.Collections.Generic;
+using Ruteros.Common.Helpers;
 
 namespace Ruteros.Common.Services
 {

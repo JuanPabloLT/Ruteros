@@ -65,10 +65,10 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
-        <ActivityIndicator IsRunning="{Binding IsRunning}"
+        <!--<ActivityIndicator IsRunning="{Binding IsRunning}"
                            AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                            AbsoluteLayout.LayoutFlags="All"/>
-        <!-- <busyindicator:SfBusyIndicator AnimationType="Gear" 
+         <busyindicator:SfBusyIndicator AnimationType="Gear" 
                                         AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
                 	                    AbsoluteLayout.LayoutFlags="All"
                 	                    BackgroundColor="{StaticResource ColorDanger}"

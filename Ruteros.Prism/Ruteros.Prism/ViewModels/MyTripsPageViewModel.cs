@@ -104,7 +104,6 @@ namespace Ruteros.Prism.ViewModels
                 response = await _apiService.GetMyTrips(url, "api", "/Trips/GetMyTrips", "bearer", token.Token, request);
                 IsAdmin = false;
             }
-            
 
             IsRunning = false;
             IsEnabled = true;

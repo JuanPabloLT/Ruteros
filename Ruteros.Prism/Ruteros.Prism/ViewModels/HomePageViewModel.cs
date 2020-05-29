@@ -18,7 +18,7 @@ namespace Ruteros.Prism.ViewModels
         {
             _navigationService = navigationService;
             Title = Languages.NewTrip;
-            IsAdminAsync();
+            IsAdmin = true;
         }
 
         public DelegateCommand StartTripCommand => _startTripCommand ?? (_startTripCommand = new DelegateCommand(StartTripAsync));
@@ -30,24 +30,22 @@ namespace Ruteros.Prism.ViewModels
         }
 
 
-        private async void IsAdminAsync()
-        {
-            UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
-            if (user.UserType.ToString().Equals("Admin"))
-            {
-                IsAdmin = false;
-            }
-            else
-            {
-                IsAdmin = true;
-            }
-        }
-
         private async void StartTripAsync()
         {
+
             if (Settings.IsLogin)
             {
-                await _navigationService.NavigateAsync(nameof(StartTripPage));
+                UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+                if (user.UserType.ToString().Equals("Admin"))
+                {
+                    IsAdmin = false;
+                }
+                else
+                {
+                    IsAdmin = true;
+                    await _navigationService.NavigateAsync(nameof(StartTripPage));
+                }
+                
             }
             else
             {
