@@ -120,7 +120,7 @@ namespace Ruteros.Prism.ViewModels
 
             string url = App.Current.Resources["UrlAPI"].ToString();
 
-            Response response = await _apiService.GetTokenAsync(url, "Account", "api/LoginFacebook", facebookProfile);
+            Response response = await _apiService.GetTokenAsync(url, "api/", "Account/LoginFacebook", facebookProfile);
 
             if (!response.IsSuccess)
             {
@@ -148,7 +148,7 @@ namespace Ruteros.Prism.ViewModels
             IsRunning = false;
             IsEnabled = true;
 
-            await _navigationService.NavigateAsync("/SoccerMasterDetailPage/NavigationPage/TournamentsPage");
+            await _navigationService.NavigateAsync("/RuterosMasterDetailPage/NavigationPage/HomePage");
             Password = string.Empty;
         }
 
