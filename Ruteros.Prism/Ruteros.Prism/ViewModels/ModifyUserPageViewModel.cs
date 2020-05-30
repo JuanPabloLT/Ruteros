@@ -21,6 +21,7 @@ namespace Ruteros.Prism.ViewModels
         private readonly IApiService _apiService;
         private bool _isRunning;
         private bool _isEnabled;
+        private bool _isRuterosUser;
         private ImageSource _image;
         private UserResponse _user;
         private MediaFile _file;
@@ -40,6 +41,7 @@ namespace Ruteros.Prism.ViewModels
             Title = Languages.ModifyUser;
             IsEnabled = true;
             User = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            IsRuterosUser = User.LoginType == LoginType.Ruteros;
             Image = User.PictureFullPath;
         }
 
@@ -51,7 +53,18 @@ namespace Ruteros.Prism.ViewModels
 
         private async void ChangePasswordAsync()
         {
-            await _navigationService.NavigateAsync(nameof(ChangePasswordPage));
+            if (!IsRuterosUser)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ChangePhotoNoSoccerUser, Languages.Accept);
+                return;
+            }
+
+        }
+
+        public bool IsRuterosUser
+        {
+            get => _isRuterosUser;
+            set => SetProperty(ref _isRuterosUser, value);
         }
 
         public ImageSource Image
@@ -161,6 +174,12 @@ namespace Ruteros.Prism.ViewModels
 
         private async void ChangeImageAsync()
         {
+            if (!IsRuterosUser)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ChangePhotoNoSoccerUser, Languages.Accept);
+                return;
+            }
+
             await CrossMedia.Current.Initialize();
 
             string source = await Application.Current.MainPage.DisplayActionSheet(

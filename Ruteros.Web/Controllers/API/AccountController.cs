@@ -48,6 +48,7 @@ namespace Ruteros.Web.Controllers.API
         }
 
         [HttpPost]
+        [Route("LoginFacebook")]
         public async Task<IActionResult> LoginFacebook([FromBody] FacebookProfile model)
         {
             if (ModelState.IsValid)
