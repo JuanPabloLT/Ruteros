@@ -24,9 +24,11 @@ namespace Ruteros.Common.Models
 
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
 
+        public LoginType LoginType { get; set; }
+
         public string PictureFullPath => string.IsNullOrEmpty(PicturePath)
         ? "https://ruteroswebitm.azurewebsites.net//images/noimage.png"
-        : $"https://ruteroswebitm.azurewebsites.net{PicturePath.Substring(1)}";
+        : LoginType == LoginType.Ruteros ? $"https://ruteroswebitm.azurewebsites.net{PicturePath.Substring(1)}" : PicturePath;
 
     }
 }

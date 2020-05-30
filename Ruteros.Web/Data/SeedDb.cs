@@ -52,7 +52,8 @@ namespace Ruteros.Web.Data
                     UserName = email,
                     PhoneNumber = phone,
                     Document = document,
-                    UserType = userType
+                    UserType = userType,
+                    LoginType = LoginType.Ruteros
                 };
 
                 await _userHelper.AddUserAsync(user, "123456");
