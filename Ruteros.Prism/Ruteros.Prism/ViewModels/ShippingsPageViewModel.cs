@@ -20,6 +20,7 @@ namespace Ruteros.Prism.ViewModels
         private bool _isEnabled;
         private List<ShippingItemViewModel> _shippings;
         private DelegateCommand _refreshCommand;
+        
 
         public ShippingsPageViewModel(INavigationService navigationService, IApiService apiService)
             : base(navigationService)
@@ -97,6 +98,7 @@ namespace Ruteros.Prism.ViewModels
             {
                 Id = s.Id,
                 Code = s.Code
+                
             }).ToList();
         }
     }

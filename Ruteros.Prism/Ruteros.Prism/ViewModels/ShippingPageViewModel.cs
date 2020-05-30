@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Navigation;
 using Ruteros.Common.Helpers;
 using Ruteros.Common.Models;
@@ -13,9 +14,11 @@ namespace Ruteros.Prism.ViewModels
     public class ShippingPageViewModel : ViewModelBase
     {
         private ShippingResponse _shipping;
+        private int _ship;
         private List<ShippingDetailResponse> _shippings;
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
+        private DelegateCommand _refreshCommand;
 
         public ShippingPageViewModel(INavigationService navigationService, IApiService apiService)
             : base(navigationService)
@@ -24,8 +27,9 @@ namespace Ruteros.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             Title = Languages.Shipping;
-            LoadShippingAsync(Shipping.Id);
         }
+
+        //public DelegateCommand RefreshCommand => _refreshCommand ?? (_refreshCommand = new DelegateCommand(LoadShippingAsync));
 
         public ShippingResponse Shipping
         {
@@ -42,11 +46,11 @@ namespace Ruteros.Prism.ViewModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-           Shipping = parameters.GetValue<ShippingResponse>("shipping");
+            Shipping = parameters.GetValue<ShippingResponse>("shipping");
             LoadShippingAsync(Shipping.Id);
         }
 
-        private async void LoadShippingAsync(int shipping)
+        private async void LoadShippingAsync(int shipping) 
         {
 
             string url = App.Current.Resources["UrlAPI"].ToString();
@@ -80,11 +84,6 @@ namespace Ruteros.Prism.ViewModels
                 PicturePath = s.PicturePath 
             }).ToList();
         }
-
-
-
-
-
 
     }
 }

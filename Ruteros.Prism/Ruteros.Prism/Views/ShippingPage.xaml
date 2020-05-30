@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-         	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+         	 xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
            	 xmlns:i18n="clr-namespace:Ruteros.Prism.Helpers"
@@ -35,6 +37,7 @@
                        MaxLines="1"
                        LineBreakMode="TailTruncation"
                        Text="{i18n:Translate Description}"/>
+              
                 <Label Grid.Column="3"
                        FontAttributes="Bold"
                        Text="{i18n:Translate Picture}"/>
@@ -54,12 +57,21 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0"
                                    Text="{Binding Id}"/>
-                            <Label Grid.Column="0"
+                            <Label Grid.Column="1"
                                    Text="{Binding Quantity}"/>
-                            <Label Grid.Column="0"
+                            <Label Grid.Column="2"
                                    Text="{Binding Description}"/>
-                            <Label Grid.Column="0" 
-                                   Text="{Binding PicturePath}"/>
+
+                            <ffimageloading:CachedImage x:Name="Picture" 
+                                                Grid.Column="3"
+                                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=Logo,Property=Y,Factor=1,Constant=30}"
+                                                Aspect="AspectFit"
+                                                Source="{Binding PicturePath}" 
+                                                CacheDuration= "50"
+                                                HeightRequest="100"
+                                                Margin="5"
+                                                RetryCount= "3"
+                                                RetryDelay= "600"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

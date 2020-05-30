@@ -21,9 +21,10 @@ namespace Ruteros.Prism.ViewModels
 
         private async void SelectShipping2Async()
         {
+           
             NavigationParameters parameters = new NavigationParameters
             {
-                { "shipping", this }
+                { "shipping", this },
             };
 
             await _navigationService.NavigateAsync(nameof(ShippingPage), parameters);
