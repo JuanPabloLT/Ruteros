@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="hello">Hello World, Click Me!</string>
-	<string name="app_name">Ruteros.Prism.Droid</string>
+	<string name="app_name">Ruteros</string>
+  <string name="facebook_app_name">Ruteros</string>
+  <string name="facebook_app_id">3092064700814782</string>
+  <string name="fb_login_protocol_scheme">fb3092064700814782</string>
 </resources>

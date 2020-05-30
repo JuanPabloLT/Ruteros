@@ -18,6 +18,8 @@ namespace Ruteros.Prism.Helpers
 
         public static string Culture { get; set; }
 
+        public static string LoginFacebook => Resource.LoginFacebook;
+
         public static string ConfirmNewPassword => Resource.ConfirmNewPassword;
 
         public static string ConfirmNewPasswordError => Resource.ConfirmNewPasswordError;
