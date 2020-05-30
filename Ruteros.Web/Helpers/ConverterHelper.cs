@@ -167,7 +167,8 @@ namespace Ruteros.Web.Helpers
                 LastName = user.LastName,
                 PhoneNumber = user.PhoneNumber,
                 PicturePath = user.PicturePath,
-                UserType = user.UserType
+                UserType = user.UserType,
+                LoginType = user.LoginType
             };
         }
 

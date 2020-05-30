@@ -3,11 +3,14 @@ using Ruteros.Web.Data.Entities;
 using Ruteros.Web.Models;
 using System.Threading.Tasks;
 using System;
+using Ruteros.Common.Models;
 
 namespace Ruteros.Web.Helpers
 {
     public interface IUserHelper
     {
+        Task<UserEntity> AddUserAsync(FacebookProfile model);
+
         Task<string> GeneratePasswordResetTokenAsync(UserEntity user);
 
         Task<IdentityResult> ResetPasswordAsync(UserEntity user, string token, string password);
