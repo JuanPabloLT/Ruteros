@@ -63,7 +63,8 @@
                 <buttons:SfButton Text="{i18n:Translate Login}"
                                   Command="{Binding LoginCommand}" 
                                   IsEnabled="{Binding IsEnabled}"
-                                  CornerRadius="10">
+                                  CornerRadius="10"
+                                  HeightRequest="45">
                     <buttons:SfButton.BackgroundGradient>
                         <gradient:SfLinearGradientBrush>
                             <gradient:SfLinearGradientBrush.GradientStops>
@@ -73,17 +74,28 @@
                         </gradient:SfLinearGradientBrush>
                     </buttons:SfButton.BackgroundGradient>
                 </buttons:SfButton>
-                <Button BackgroundColor="#4768AD" 
-                        Command="{Binding LoginFacebookCommand}"
-                        HeightRequest="45"
-                        IsEnabled="{Binding IsEnabled}"
-                        ImageSource="ic_fb"
-                        Text="{i18n:Translate LoginFacebook}"
-                        TextColor="#FFFFFF"/>
+                <buttons:SfButton Text="{i18n:Translate LoginFacebook}"
+                                  Command="{Binding LoginFacebookCommand}" 
+                                  IsEnabled="{Binding IsEnabled}"
+                                  CornerRadius="10"
+                                  HeightRequest="45"
+                                  ImageSource="ic_fb"
+                                  TextColor="#FFFFFF"
+                                  ShowIcon="True">
+                    <buttons:SfButton.BackgroundGradient>
+                        <gradient:SfLinearGradientBrush>
+                            <gradient:SfLinearGradientBrush.GradientStops>
+                                <gradient:SfGradientStop Color="#4768AD" Offset="0"/>
+                                <gradient:SfGradientStop Color="#3B5998" Offset="1"/>
+                            </gradient:SfLinearGradientBrush.GradientStops>
+                        </gradient:SfLinearGradientBrush>
+                    </buttons:SfButton.BackgroundGradient>
+                </buttons:SfButton>
                 <buttons:SfButton Text="{i18n:Translate Register}"
                                   Command="{Binding RegisterCommand}" 
                                   IsEnabled="{Binding IsEnabled}"
-                                  CornerRadius="10">
+                                  CornerRadius="10"
+                                  HeightRequest="45">
                     <buttons:SfButton.BackgroundGradient>
                         <gradient:SfLinearGradientBrush>
                             <gradient:SfLinearGradientBrush.GradientStops>
