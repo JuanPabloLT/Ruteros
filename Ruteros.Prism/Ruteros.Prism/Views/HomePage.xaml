@@ -4,6 +4,8 @@
              xmlns:prism="http://prismlibrary.com"
          	 xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"    
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              ios:Page.UseSafeArea="true"
            	 xmlns:i18n="clr-namespace:Ruteros.Prism.Helpers"
              prism:ViewModelLocator.AutowireViewModel="True"
@@ -19,10 +21,20 @@
         <maps:Map x:Name="MyMap"
                   MapType="Street"/>
         <StackLayout Padding="5">
-            <Button Command="{Binding StartTripCommand}" 
-                    IsVisible="{Binding IsAdmin}"
-                    Margin="10,0"
-                    Text="{i18n:Translate StartTrip}"/>
+            <buttons:SfButton Text="{i18n:Translate StartTrip}"
+                                  Command="{Binding StartTripCommand}"
+                                  IsVisible="{Binding IsAdmin}"
+                                  CornerRadius="10"
+                                  HeightRequest="45">
+                <buttons:SfButton.BackgroundGradient>
+                    <gradient:SfLinearGradientBrush>
+                        <gradient:SfLinearGradientBrush.GradientStops>
+                            <gradient:SfGradientStop Color="{StaticResource ColorDanger}" Offset="0"/>
+                            <gradient:SfGradientStop Color="{StaticResource ColorAccent}" Offset="1"/>
+                        </gradient:SfLinearGradientBrush.GradientStops>
+                    </gradient:SfLinearGradientBrush>
+                </buttons:SfButton.BackgroundGradient>
+            </buttons:SfButton>
         </StackLayout>
     </StackLayout>
 </ContentPage>
