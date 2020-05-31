@@ -190,7 +190,7 @@
     <value>Immetti il tuo nome.</value>
   </data>
   <data name="FirstNameError" xml:space="preserve">
-    <value>- Immettere un nome</value>
+    <value>Immettere un nome</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Cognome</value>
@@ -199,7 +199,7 @@
     <value>Immetti il tuo cognome.</value>
   </data>
   <data name="LastNameError" xml:space="preserve">
-    <value>- Immettere un cognome</value>
+    <value>Immettere un cognome</value>
   </data>
   <data name="Address" xml:space="preserve">
     <value>Indirizzo</value>
@@ -328,7 +328,7 @@
     <value>Data warehouse</value>
   </data>
   <data name="WarehouseIdPlaceHolder" xml:space="preserve">
-    <value>Inserisci l&amp;#39;ID magazzino ...!</value>
+    <value>Inserisci ID magazzino ...!</value>
   </data>
   <data name="PlaqueError1" xml:space="preserve">
     <value>Devi inserire una targa.!</value>

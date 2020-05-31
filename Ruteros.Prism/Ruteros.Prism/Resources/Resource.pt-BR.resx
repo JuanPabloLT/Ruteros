@@ -190,7 +190,7 @@
     <value>Insira seu nome</value>
   </data>
   <data name="FirstNameError" xml:space="preserve">
-    <value>- Digite um nome</value>
+    <value>Digite um nome</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Sobrenome</value>
@@ -199,7 +199,7 @@
     <value>Insira seu sobrenome</value>
   </data>
   <data name="LastNameError" xml:space="preserve">
-    <value>- Digite um sobrenome</value>
+    <value>Digite um sobrenome</value>
   </data>
   <data name="Address" xml:space="preserve">
     <value>Endereço</value>

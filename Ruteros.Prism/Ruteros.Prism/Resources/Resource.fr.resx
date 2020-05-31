@@ -139,7 +139,7 @@
     <value>Historique des arrivages</value>
   </data>
   <data name="TripHistory" xml:space="preserve">
-    <value>Voir l&amp;#39;historique des voyages!</value>
+    <value>historique des voyages!</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>E-mail</value>
@@ -190,7 +190,7 @@
     <value>Entrez votre prénom.</value>
   </data>
   <data name="FirstNameError" xml:space="preserve">
-    <value>- Vous devez entrer un prénom</value>
+    <value>Vous devez entrer un prénom</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Nom</value>
@@ -316,19 +316,19 @@
     <value>Plaque</value>
   </data>
   <data name="PlaquePlaceHolder" xml:space="preserve">
-    <value>Entrez la plaque d&amp;#39;immatriculation du véhicule ...!</value>
+    <value>Entrez la plaque immatriculation du véhicule ...!</value>
   </data>
   <data name="Shipping" xml:space="preserve">
     <value>Expédition</value>
   </data>
   <data name="ShippingCodePlaceHolder" xml:space="preserve">
-    <value>Entrez le code d&amp;#39;expédition ...!</value>
+    <value>Entrez le code expédition ...!</value>
   </data>
   <data name="Warehouse" xml:space="preserve">
     <value>Entrepôt</value>
   </data>
   <data name="WarehouseIdPlaceHolder" xml:space="preserve">
-    <value>Entrez l&amp;#39;identifiant de l&amp;#39;entrepôt ...!</value>
+    <value>Entrez identifiant de l&amp;#39;entrepôt ...!</value>
   </data>
   <data name="PlaqueError1" xml:space="preserve">
     <value>Vous devez entrer une plaque.!</value>
