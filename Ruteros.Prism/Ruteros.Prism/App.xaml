@@ -13,10 +13,10 @@
 
             <!-- Colors -->
             <Color x:Key="ColorBackgroud">#FFFFFF</Color>
-            <Color x:Key="ColorPrimary">#118C76</Color>
-            <Color x:Key="ColorSecondary">#25D9B8</Color>
-            <Color x:Key="ColorDanger">#F2BB16</Color>
-            <Color x:Key="ColorAccent">#BF800B</Color>
+            <Color x:Key="ColorPrimary">#A60303</Color>
+            <Color x:Key="ColorSecondary">#732626</Color>
+            <Color x:Key="ColorDanger">#595959</Color>
+            <Color x:Key="ColorAccent">#0D0D0D</Color>
             <Color x:Key="ColorFont">#000000</Color>
             <Color x:Key="ColorFontInverse">#FFFFFF</Color>
 
