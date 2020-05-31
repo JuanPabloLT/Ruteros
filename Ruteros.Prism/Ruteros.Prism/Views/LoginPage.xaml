@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-           	 xmlns:i18n="clr-namespace:Ruteros.Prism.Helpers"
+           	 xmlns:i18n="clr-namespace:Ruteros.Prism.Helpers" 
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Ruteros.Prism.Views.LoginPage"
              BackgroundColor="{StaticResource ColorBackgroud}"
@@ -58,9 +60,19 @@
                 </Label>
             </StackLayout>
             <StackLayout>
-                <Button Command="{Binding LoginCommand}" 
-                        IsEnabled="{Binding IsEnabled}"
-                        Text="{i18n:Translate Login}"/>
+                <buttons:SfButton Text="{i18n:Translate Login}"
+                                  Command="{Binding LoginCommand}" 
+                                  IsEnabled="{Binding IsEnabled}"
+                                  CornerRadius="10">
+                    <buttons:SfButton.BackgroundGradient>
+                        <gradient:SfLinearGradientBrush>
+                            <gradient:SfLinearGradientBrush.GradientStops>
+                                <gradient:SfGradientStop Color="{StaticResource ColorPrimary}" Offset="0"/>
+                                <gradient:SfGradientStop Color="{StaticResource ColorSecondary}" Offset="1"/>
+                            </gradient:SfLinearGradientBrush.GradientStops>
+                        </gradient:SfLinearGradientBrush>
+                    </buttons:SfButton.BackgroundGradient>
+                </buttons:SfButton>
                 <Button BackgroundColor="#4768AD" 
                         Command="{Binding LoginFacebookCommand}"
                         HeightRequest="45"
@@ -68,10 +80,19 @@
                         ImageSource="ic_fb"
                         Text="{i18n:Translate LoginFacebook}"
                         TextColor="#FFFFFF"/>
-                <Button Command="{Binding RegisterCommand}" 
-                        IsEnabled="{Binding IsEnabled}"
-                        Text="{i18n:Translate Register}"
-                        Style="{StaticResource DangerButton}"/>
+                <buttons:SfButton Text="{i18n:Translate Register}"
+                                  Command="{Binding RegisterCommand}" 
+                                  IsEnabled="{Binding IsEnabled}"
+                                  CornerRadius="10">
+                    <buttons:SfButton.BackgroundGradient>
+                        <gradient:SfLinearGradientBrush>
+                            <gradient:SfLinearGradientBrush.GradientStops>
+                                <gradient:SfGradientStop Color="{StaticResource ColorDanger}" Offset="0"/>
+                                <gradient:SfGradientStop Color="{StaticResource ColorAccent}" Offset="1"/>
+                            </gradient:SfLinearGradientBrush.GradientStops>
+                        </gradient:SfLinearGradientBrush>
+                    </buttons:SfButton.BackgroundGradient>
+                </buttons:SfButton>
             </StackLayout>
         </StackLayout>
 
