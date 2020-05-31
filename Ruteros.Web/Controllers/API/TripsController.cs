@@ -226,8 +226,8 @@ namespace Ruteros.Web.Controllers.API
                 .Include(t => t.Warehouse)
                 .Include(t => t.User)
                 .Where(t => t.User.Id == request.UserId &&
-                            t.StartDate >= request.StartDate &&
-                            t.EndDate <= request.EndDate)
+                            t.StartDate >= request.StartDate /*&&
+                            t.EndDate <= request.EndDate*/)
                 .OrderByDescending(t => t.StartDate)
                 .ToListAsync();
 
@@ -255,8 +255,8 @@ namespace Ruteros.Web.Controllers.API
                    .Include(t => t.Vehicle)
                    .Include(t => t.Warehouse)
                    .Include(t => t.User)
-                   .Where(t => t.StartDate >= request.StartDate &&
-                               t.EndDate <= request.EndDate
+                   .Where(t => t.StartDate >= request.StartDate /*&&
+                               t.EndDate <= request.EndDate*/
                                && t.User.Document == request.Document)
                    .OrderByDescending(t => t.StartDate)
                    .ToListAsync();
@@ -270,8 +270,8 @@ namespace Ruteros.Web.Controllers.API
                 .Include(t => t.Vehicle)
                 .Include(t => t.Warehouse)
                 .Include(t => t.User)
-                .Where(t => t.StartDate >= request.StartDate &&
-                            t.EndDate <= request.EndDate
+                .Where(t => t.StartDate >= request.StartDate /*&&
+                            t.EndDate <= request.EndDate*/
                             && t.Shipping.Code == request.Shipping)
                 .OrderByDescending(t => t.StartDate)
                 .ToListAsync();
@@ -285,8 +285,8 @@ namespace Ruteros.Web.Controllers.API
                 .Include(t => t.Vehicle)
                 .Include(t => t.Warehouse)
                 .Include(t => t.User)
-                .Where(t => t.StartDate >= request.StartDate &&
-                            t.EndDate <= request.EndDate
+                .Where(t => t.StartDate >= request.StartDate /*&&
+                            t.EndDate <= request.EndDate*/
                             && t.Shipping.Code == request.Shipping
                             && t.User.Document == request.Document)
                 .OrderByDescending(t => t.StartDate)
@@ -302,8 +302,8 @@ namespace Ruteros.Web.Controllers.API
                 .Include(t => t.Vehicle)
                 .Include(t => t.Warehouse)
                 .Include(t => t.User)
-                .Where(t => t.StartDate >= request.StartDate &&
-                            t.EndDate <= request.EndDate)
+                .Where(t => t.StartDate >= request.StartDate /*&&
+                            t.EndDate <= request.EndDate*/)
                 .OrderByDescending(t => t.StartDate)
                 .ToListAsync();
             }

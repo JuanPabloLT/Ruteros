@@ -30,10 +30,10 @@
                        Grid.Row="0"
                        FontAttributes="Bold"
                        Text="{i18n:Translate StartDate}"/>
-                <Label Grid.Column="1"
+                <!--<Label Grid.Column="1"
                        Grid.Row="0"
                        FontAttributes="Bold"
-                       Text="{i18n:Translate EndDate}"/>
+                       Text="{i18n:Translate EndDate}"/>-->
                 <Label Grid.Column="0"
                        Grid.Row="2"
                        IsVisible="{Binding IsAdmin}"
@@ -47,9 +47,9 @@
                 <DatePicker  Grid.Column="0"
                              Grid.Row="1"
                              Date="{Binding StartDate}"/>
-                <DatePicker  Grid.Column="1"
+                <!--<DatePicker  Grid.Column="1"
                              Grid.Row="1"
-                             Date="{Binding EndDate}"/>
+                             Date="{Binding EndDate}"/>-->
                 <Entry Grid.Row="2" 
                        Grid.Column="1"
                        FontSize="18" 

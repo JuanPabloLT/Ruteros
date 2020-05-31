@@ -28,7 +28,7 @@ namespace Ruteros.Prism.ViewModels
             _apiService = apiService;
             Title = Languages.MyTrips;
             StartDate = DateTime.Today.AddDays(-7);
-            EndDate = DateTime.Today;
+            //EndDate = DateTime.Today;
             Document = "";
             Shipping = "";
             IsRunning = false;
@@ -40,7 +40,7 @@ namespace Ruteros.Prism.ViewModels
 
         public DateTime StartDate { get; set; }
 
-        public DateTime EndDate { get; set; }
+        //public DateTime EndDate { get; set; }
 
         public string Document { get; set; }
         public string Shipping { get; set; }
@@ -86,7 +86,7 @@ namespace Ruteros.Prism.ViewModels
             UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
             MyTripsRequest request = new MyTripsRequest
             {
-                EndDate = EndDate.AddDays(1).ToUniversalTime(),
+                //EndDate = EndDate.AddDays(1).ToUniversalTime(),
                 StartDate = StartDate.ToUniversalTime(),
                 UserId = user.Id,
                 Document = Document,

@@ -8,7 +8,7 @@ namespace Ruteros.Common.Models
 
         public DateTime StartDate { get; set; }
 
-        public DateTime EndDate { get; set; }
+        //public DateTime EndDate { get; set; }
         public string Document { get; set; }
         public string Shipping { get; set; }
     }
