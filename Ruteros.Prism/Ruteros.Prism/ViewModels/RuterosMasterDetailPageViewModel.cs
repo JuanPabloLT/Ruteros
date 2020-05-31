@@ -103,13 +103,15 @@ namespace Ruteros.Prism.ViewModels
                 {
                     Icon = "ic_content_paste",
                     PageName = "ShippingsPage",
-                    Title = Languages.CheckShipping
+                    Title = Languages.CheckShipping,
+                    IsLoginRequired = true
                 },
                 new Menu
                 {
                     Icon = "ic_account_circle",
                     PageName = "ModifyUserPage",
-                    Title = Languages.ModifyUser
+                    Title = Languages.ModifyUser,
+                    IsLoginRequired = true
                 },
                 new Menu
                 {
@@ -124,9 +126,12 @@ namespace Ruteros.Prism.ViewModels
                 {
                     Icon = m.Icon,
                     PageName = m.PageName,
-                    Title = m.Title
+                    Title = m.Title,
+                    IsLoginRequired = m.IsLoginRequired
                 }).ToList());
         }
+
+
 
     }
 }
