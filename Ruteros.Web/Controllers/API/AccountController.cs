@@ -73,6 +73,7 @@ namespace Ruteros.Web.Controllers.API
             return BadRequest();
         }
 
+        /*
         [HttpPost]
         public async Task<IActionResult> CreateToken([FromBody] LoginViewModel model)
         {
@@ -92,7 +93,7 @@ namespace Ruteros.Web.Controllers.API
             }
 
             return BadRequest();
-        }
+        }*/
 
         private object GetToken(string email)
         {
@@ -159,6 +160,7 @@ namespace Ruteros.Web.Controllers.API
                 UserName = request.Email,
                 PicturePath = picturePath,
                 UserType = request.UserTypeId == 1 ? UserType.Admin : UserType.Driver
+                //LoginType = LoginType.Ruteros// --------------------------------------------------------------
             };
 
             IdentityResult result = await _userHelper.AddUserAsync(user, request.Password);
