@@ -117,17 +117,6 @@
                                Placeholder="{i18n:Translate PasswordConfirmPlaceHolder}"
                                Text="{Binding User.PasswordConfirm}"/>
 
-                        <Label Grid.Row="8"
-                               Grid.Column="0"
-                               Text="{i18n:Translate RegisterAs}"
-                               VerticalOptions="Center"/>
-                        <Picker Grid.Row="8"
-                                Grid.Column="1"
-                                ItemDisplayBinding="{Binding Name}"
-                                ItemsSource="{Binding Roles}"
-                                SelectedItem="{Binding Role}"
-                                Title="{i18n:Translate RegisterAsPlaceHolder}">
-                        </Picker>
                     </Grid>
                 </StackLayout>
             </ScrollView>
