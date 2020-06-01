@@ -107,7 +107,7 @@ namespace Ruteros.Prism.ViewModels
                 imageArray = _filesHelper.ReadFully(_file.GetStream());
             }
             User.PictureArray = imageArray;
-            User.UserTypeId = Role.Id;
+            User.UserTypeId = 2;
             User.CultureInfo = Languages.Culture;
             Response response = await _apiService.RegisterUserAsync(url, "/api", "/Account", User);
             IsRunning = false;
@@ -197,12 +197,6 @@ namespace Ruteros.Prism.ViewModels
             if (string.IsNullOrEmpty(User.Phone))
             {
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.PhoneError, Languages.Accept);
-                return false;
-            }
-
-            if (Role == null)
-            {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.RegisterAsError, Languages.Accept);
                 return false;
             }
 
