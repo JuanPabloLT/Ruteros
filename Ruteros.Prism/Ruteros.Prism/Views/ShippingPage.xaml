@@ -21,9 +21,9 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="4*" />
-                    <ColumnDefinition Width="4*" />
-                    <ColumnDefinition Width="6*" />
                     <ColumnDefinition Width="4*" />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0"
@@ -50,8 +50,8 @@
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="4*" />
-                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="4*" />
                                 <ColumnDefinition Width="4*" />
                             </Grid.ColumnDefinitions>
@@ -62,16 +62,14 @@
                             <Label Grid.Column="2"
                                    Text="{Binding Description}"/>
 
-                            <ffimageloading:CachedImage x:Name="Picture" 
-                                                Grid.Column="3"
-                                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=Logo,Property=Y,Factor=1,Constant=30}"
-                                                Aspect="AspectFit"
-                                                Source="{Binding PicturePath}" 
-                                                CacheDuration= "50"
-                                                HeightRequest="100"
-                                                Margin="5"
-                                                RetryCount= "3"
-                                                RetryDelay= "600"/>
+                            <ffimageloading:CachedImage Grid.Column="3"
+                                                        Aspect="AspectFill"
+                                                        Source="{Binding PictureFullPath}"
+                                                        CacheDuration= "50"
+                                                        Margin="5"
+                                                        RetryCount= "3"
+                                                        RetryDelay= "600"
+                                                        WidthRequest="100"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
