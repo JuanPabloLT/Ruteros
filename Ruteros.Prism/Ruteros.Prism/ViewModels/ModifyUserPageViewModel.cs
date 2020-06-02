@@ -58,7 +58,7 @@ namespace Ruteros.Prism.ViewModels
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ChangePhotoNoSoccerUser, Languages.Accept);
                 return;
             }
-
+            await _navigationService.NavigateAsync(nameof(ChangePasswordPage));
         }
 
         public bool IsRuterosUser
