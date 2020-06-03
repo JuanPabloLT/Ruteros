@@ -92,6 +92,7 @@ namespace Ruteros.Prism.Helpers
         public static string Description => Resource.Description;
         public static string Picture => Resource.Picture;
 
+        public static string ExportExcel => Resource.ExportExcel;
 
         public static string UserUpdated => Resource.UserUpdated;
 

@@ -9,6 +9,11 @@ using Ruteros.Common.Models;
 using Ruteros.Common.Services;
 using Ruteros.Prism.Helpers;
 
+using System.Windows.Input;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using Xamarin.Essentials;
+
 namespace Ruteros.Prism.ViewModels
 {
     public class MyTripsPageViewModel : ViewModelBase
@@ -20,6 +25,8 @@ namespace Ruteros.Prism.ViewModels
         private bool _isEnabled;
         private List<TripItemViewModel> _trips;
         private DelegateCommand _refreshCommand;
+        public ICommand ExportToExcelCommand { private set; get; }
+        private ExcelService excelService;
 
         public MyTripsPageViewModel(INavigationService navigationService, IApiService apiService)
             : base(navigationService)
@@ -34,6 +41,8 @@ namespace Ruteros.Prism.ViewModels
             IsRunning = false;
             IsEnabled = true;
             LoadTripsAsync();
+            ExportToExcelCommand = new Command(async () => await ExportToExcel());
+            excelService = new ExcelService();
         }
 
         public DelegateCommand RefreshCommand => _refreshCommand ?? (_refreshCommand = new DelegateCommand(LoadTripsAsync));
@@ -136,6 +145,56 @@ namespace Ruteros.Prism.ViewModels
                 Warehouse = t.Warehouse,
                 Shipping = t.Shipping
             }).ToList();
+        }
+
+
+        async Task ExportToExcel()
+        {
+            var fileName = $"{Guid.NewGuid()}.xlsx";
+            string filePath = excelService.GenerateExcel(fileName);
+
+            var header = new List<string>() { 
+                "ID", 
+                "Document", 
+                "Remarks", 
+                "Source",
+                 "Target",
+                "StartDate", 
+                "EndDate", 
+                "User",
+                "Vehicle",
+                "Warehouse",
+                "Shipping" };
+
+            var data = new ExcelData();
+            data.Headers = header;
+
+            foreach (var TripResponse in Trips)
+            {
+                var row = new List<string>()
+                {
+                TripResponse.Id.ToString(),
+                TripResponse.Document,
+                TripResponse.Remarks,
+                TripResponse.Source,
+                TripResponse.Target,
+                TripResponse.StartDate.ToString(),
+                TripResponse.EndDate.ToString(),
+                TripResponse.User.FullNameWithDocument,
+                TripResponse.Vehicle.Plaque,
+                TripResponse.Warehouse.Address,
+                TripResponse.Shipping.Code
+                };
+
+                data.Values.Add(row);
+            }
+
+            excelService.InsertDataIntoSheet(filePath, "Trips", data);
+
+            await Launcher.OpenAsync(new OpenFileRequest()
+            {
+                File = new ReadOnlyFile(filePath)
+            });
         }
     }
 }

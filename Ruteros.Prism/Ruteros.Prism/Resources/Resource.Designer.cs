@@ -412,6 +412,15 @@ namespace Ruteros.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export data to Excel.
+        /// </summary>
+        public static string ExportExcel {
+            get {
+                return ResourceManager.GetString("ExportExcel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         public static string FirstName {

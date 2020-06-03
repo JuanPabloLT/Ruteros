@@ -5,6 +5,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
          	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              ios:Page.UseSafeArea="true"
            	 xmlns:i18n="clr-namespace:Ruteros.Prism.Helpers"
              x:Class="Ruteros.Prism.Views.ShippingsPage"
@@ -27,12 +28,6 @@
                        Grid.Row="0"
                        FontAttributes="Bold"
                        Text="{i18n:Translate Shipping}"/>
-                <Entry Grid.Row="0" 
-                       Grid.Column="1"
-                       FontSize="18"
-                       HorizontalOptions="FillAndExpand"
-                       Placeholder="{i18n:Translate ShippingCodePlaceHolder}" 
-                       Text="{Binding Shipping}"/>
                 <ImageButton Grid.Column="2"
                              Grid.Row="0"
                              Grid.RowSpan="2"
@@ -40,6 +35,12 @@
                              Command="{Binding RefreshCommand}" 
                              Source="ic_history"/>
             </Grid>
+            <inputLayout:SfTextInputLayout
+                    Grid.Row="0" 
+                    Grid.Column="1"
+                    Hint="{i18n:Translate ShippingCodePlaceHolder}">
+                <Entry Text="{Binding Shipping}"/>
+            </inputLayout:SfTextInputLayout>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

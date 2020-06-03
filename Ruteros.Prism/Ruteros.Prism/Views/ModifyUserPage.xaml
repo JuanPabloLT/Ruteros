@@ -4,6 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              xmlns:i18n="clr-namespace:Ruteros.Prism.Helpers"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Ruteros.Prism.Views.ModifyUserPage"
@@ -31,60 +32,26 @@
                         </ffimageloading:CachedImage.GestureRecognizers>
                     </ffimageloading:CachedImage>
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="3*"/>
-                        </Grid.ColumnDefinitions>
+                    <inputLayout:SfTextInputLayout
+                    Hint="{i18n:Translate Document}">
+                        <Entry Text="{Binding User.Document}"/>
+                    </inputLayout:SfTextInputLayout>
+                    <inputLayout:SfTextInputLayout
+                    Hint="{i18n:Translate FirstName}"
+                        IsEnabled="{Binding IsRuterosUser}">
+                        <Entry Text="{Binding User.FirstName}"/>
+                    </inputLayout:SfTextInputLayout>
+                    <inputLayout:SfTextInputLayout
+                    Hint="{i18n:Translate LastName}"
+                        IsEnabled="{Binding IsRuterosUser}">
+                        <Entry Text="{Binding User.LastName}"/>
+                    </inputLayout:SfTextInputLayout>
+                    <inputLayout:SfTextInputLayout
+                    Hint="{i18n:Translate Phone}"
+                        IsEnabled="{Binding IsRuterosUser}">
+                        <Entry Text="{Binding User.PhoneNumber}"/>
+                    </inputLayout:SfTextInputLayout>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-
-                        <Label Grid.Row="0"
-                               Grid.Column="0"
-                               Text="{i18n:Translate Document}"
-                               VerticalOptions="Center"/>
-                        <Entry Grid.Row="0"
-                               Grid.Column="1"
-                               Keyboard="Numeric"
-                               Placeholder="{i18n:Translate DocumentPlaceHolder}"
-                               Text="{Binding User.Document}"/>
-
-                        <Label Grid.Row="1"
-                               Grid.Column="0"
-                               Text="{i18n:Translate FirstName}"
-                               VerticalOptions="Center"/>
-                        <Entry Grid.Row="1"
-                               Grid.Column="1"
-                               IsEnabled="{Binding IsRuterosUser}"
-                               Placeholder="{i18n:Translate FirstNamePlaceHolder}"
-                               Text="{Binding User.FirstName}"/>
-
-                        <Label Grid.Row="2"
-                               Grid.Column="0"
-                               Text="{i18n:Translate LastName}"
-                               VerticalOptions="Center"/>
-                        <Entry Grid.Row="2"
-                               Grid.Column="1"
-                               IsEnabled="{Binding IsRuterosUser}"
-                               Placeholder="{i18n:Translate LastNamePlaceHolder}"
-                               Text="{Binding User.LastName}"/>
-
-                        <Label Grid.Row="4"
-                               Grid.Column="0"
-                               Text="{i18n:Translate Phone}"
-                               VerticalOptions="Center"/>
-                        <Entry Grid.Row="4" 
-                               Grid.Column="1"
-                               Keyboard="Telephone"
-                               Placeholder="{i18n:Translate PhonePlaceHolder}"
-                               Text="{Binding User.PhoneNumber}"/>
-                    </Grid>
                 </StackLayout>
             </ScrollView>
             <StackLayout Orientation="Horizontal"

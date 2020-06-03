@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
          	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
@@ -14,57 +15,39 @@
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All" 
                      Padding="5">
+            <inputLayout:SfTextInputLayout ContainerType="None"
+                               Hint="{i18n:Translate StartDate}">
+                <DatePicker Date="{Binding StartDate}"/>
+            </inputLayout:SfTextInputLayout>
+            <inputLayout:SfTextInputLayout
+                    IsVisible="{Binding IsAdmin}"
+                    HorizontalOptions="Center"
+                 InputViewPadding="5" 
+                    Hint="{i18n:Translate Document}">
+                <Entry Text="{Binding Document}"/>
+            </inputLayout:SfTextInputLayout>
+            <inputLayout:SfTextInputLayout
+                    IsVisible="{Binding IsAdmin}"
+                    HorizontalOptions="Center"
+                InputViewPadding="5" 
+                    Hint="{i18n:Translate Shipping}">
+                <Entry Text="{Binding Shipping}"/>
+            </inputLayout:SfTextInputLayout>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0"
-                       Grid.Row="0"
-                       FontAttributes="Bold"
-                       Text="{i18n:Translate StartDate}"/>
                 <!--<Label Grid.Column="1"
                        Grid.Row="0"
                        FontAttributes="Bold"
                        Text="{i18n:Translate EndDate}"/>-->
-                <Label Grid.Column="0"
-                       Grid.Row="2"
-                       IsVisible="{Binding IsAdmin}"
-                       FontAttributes="Bold"
-                       Text="{i18n:Translate Document}"/>
-                <Label Grid.Column="0"
-                       Grid.Row="3"
-                       IsVisible="{Binding IsAdmin}"
-                       FontAttributes="Bold"
-                       Text="{i18n:Translate Shipping}"/>
-                <DatePicker  Grid.Column="0"
-                             Grid.Row="1"
-                             Date="{Binding StartDate}"/>
                 <!--<DatePicker  Grid.Column="1"
                              Grid.Row="1"
                              Date="{Binding EndDate}"/>-->
-                <Entry Grid.Row="2" 
-                       Grid.Column="1"
-                       FontSize="18" 
-                       IsVisible="{Binding IsAdmin}"
-                       HorizontalOptions="FillAndExpand"
-                       Placeholder="{i18n:Translate DocumentPlaceHolder}" 
-                       Text="{Binding Document}"/>
-                <Entry Grid.Row="3" 
-                       Grid.Column="1"
-                       FontSize="18" 
-                       IsVisible="{Binding IsAdmin}"
-                       HorizontalOptions="FillAndExpand"
-                       Placeholder="{i18n:Translate ShippingCodePlaceHolder}" 
-                       Text="{Binding Shipping}"/>
-                <ImageButton Grid.Column="2"
+                <ImageButton Grid.Column="0"
                              Grid.Row="0"
                              Grid.RowSpan="2"
                              IsEnabled="{Binding IsEnabled}"
@@ -128,6 +111,28 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!--<Label Grid.Column="1"
+                       Grid.Row="0"
+                       FontAttributes="Bold"
+                       Text="{i18n:Translate EndDate}"/>-->
+                <!--<DatePicker  Grid.Column="1"
+                             Grid.Row="1"
+                             Date="{Binding EndDate}"/>-->
+                <Button Grid.Row="0"
+                    Margin="0"
+                    BackgroundColor="ForestGreen"
+                    Text="{i18n:Translate ExportExcel}"
+                    TextColor="White"
+                    CornerRadius="5"
+                    Command="{Binding ExportToExcelCommand}"/>
+            </Grid>
         </StackLayout>
 
         <ActivityIndicator IsRunning="{Binding IsRunning}"

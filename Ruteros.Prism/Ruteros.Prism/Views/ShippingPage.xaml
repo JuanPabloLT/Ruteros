@@ -69,7 +69,7 @@
                                                         Margin="5"
                                                         RetryCount= "3"
                                                         RetryDelay= "600"
-                                                        WidthRequest="100"/>
+                                                        WidthRequest="200"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

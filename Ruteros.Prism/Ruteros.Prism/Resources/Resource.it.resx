@@ -435,4 +435,7 @@
   <data name="ChangePhotoNoSoccerUser" xml:space="preserve">
     <value>Gli utenti creati dai social network, devono modificare la foto o la password sul social network.!</value>
   </data>
+  <data name="ExportExcel" xml:space="preserve">
+    <value>Esporta dati in Excel</value>
+  </data>
 </root>
