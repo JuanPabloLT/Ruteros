@@ -255,7 +255,7 @@ namespace Ruteros.Web.Controllers.API
             userEntity.FirstName = request.FirstName;
             userEntity.LastName = request.LastName;
             userEntity.PhoneNumber = request.Phone;
-            userEntity.Document = request.Phone;
+            userEntity.Document = request.Document;
             userEntity.PicturePath = picturePath;
 
             IdentityResult respose = await _userHelper.UpdateUserAsync(userEntity);
