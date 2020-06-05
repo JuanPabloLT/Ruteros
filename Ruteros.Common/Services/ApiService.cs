@@ -292,7 +292,7 @@ namespace Ruteros.Common.Services
         }
 
 
-        public async Task<Response> GetShippings(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, ShippingRequest model)
+        public async Task<Response> GetShippings(string urlBase, string servicePrefix, string controller, /*string tokenType, string accessToken, */ShippingRequest model)
         {
             try
             {
@@ -303,7 +303,7 @@ namespace Ruteros.Common.Services
                     BaseAddress = new Uri(urlBase)
                 };
 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
                 string url = $"{servicePrefix}{controller}";
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 string result = await response.Content.ReadAsStringAsync();
@@ -334,7 +334,7 @@ namespace Ruteros.Common.Services
             }
         }
 
-        public async Task<Response> GetShippingDetails(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, ShippingDetailRequest model)
+        public async Task<Response> GetShippingDetails(string urlBase, string servicePrefix, string controller,/* string tokenType, string accessToken, */ShippingDetailRequest model)
         {
             try
             {
@@ -345,7 +345,7 @@ namespace Ruteros.Common.Services
                     BaseAddress = new Uri(urlBase)
                 };
 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
                 string url = $"{servicePrefix}{controller}";
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 string result = await response.Content.ReadAsStringAsync();

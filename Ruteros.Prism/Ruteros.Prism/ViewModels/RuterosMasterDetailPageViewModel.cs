@@ -104,7 +104,7 @@ namespace Ruteros.Prism.ViewModels
                     Icon = "ic_content_paste",
                     PageName = "ShippingsPage",
                     Title = Languages.CheckShipping,
-                    IsLoginRequired = true
+                    //IsLoginRequired = true
                 },
                 new Menu
                 {

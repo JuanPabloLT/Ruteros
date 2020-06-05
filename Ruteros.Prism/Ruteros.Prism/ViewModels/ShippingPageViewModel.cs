@@ -60,14 +60,14 @@ namespace Ruteros.Prism.ViewModels
                 return;
             }
 
-            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            //TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
             ShippingDetailRequest request = new ShippingDetailRequest
             {
                 Shippings = shipping
             };
 
-            Response response = await _apiService.GetShippingDetails(url, "api", "/Shippings/GetShippingDetails", "bearer", token.Token, request);
+            Response response = await _apiService.GetShippingDetails(url, "api", "/Shippings/GetShippingDetails", /*"bearer", token.Token, */request);
 
             if (!response.IsSuccess)
             {

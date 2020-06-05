@@ -38,8 +38,8 @@ namespace Ruteros.Common.Services
         Task<Response> GetMyTripsAdmin(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, MyTripsRequest model);
 
 
-        Task<Response> GetShippings(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, ShippingRequest model);
-        Task<Response> GetShippingDetails(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, ShippingDetailRequest model);
+        Task<Response> GetShippings(string urlBase, string servicePrefix, string controller,/* string tokenType, string accessToken,*/ ShippingRequest model);
+        Task<Response> GetShippingDetails(string urlBase, string servicePrefix, string controller, /*string tokenType, string accessToken,*/ ShippingDetailRequest model);
 
     }
 }
