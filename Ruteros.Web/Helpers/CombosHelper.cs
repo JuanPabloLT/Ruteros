@@ -12,6 +12,7 @@ namespace Ruteros.Web.Helpers
         {
             List<SelectListItem> list = new List<SelectListItem>
             {
+                //LLENAR COMBOS
                 new SelectListItem { Value = "0", Text = "[Select a role...]" },
                 new SelectListItem { Value = "1", Text = "Driver" }/*,
                 new SelectListItem { Value = "2", Text = "Admin" }*/
